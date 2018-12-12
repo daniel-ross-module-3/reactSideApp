@@ -13,6 +13,7 @@ class ItemIndex extends Component {
   };
   componentWillMount() {
     this.fetchItems();
+    this.changeQuanity();
   }
 
   fetchItems = () => {
@@ -45,6 +46,10 @@ class ItemIndex extends Component {
 
 
   changeQuanity = (num, item) => {
+
+    // console.log("something")
+    
+
     //+1 or -1 &&& the id of the box
     // console.log(num, item)
     let editedItems = [...this.state.allTheItems];
@@ -55,19 +60,22 @@ class ItemIndex extends Component {
         eachItem.quantity+=num
         // console.log(eachItem.quantity)
         // return eachItem.quantity
-      }
-      Axios.post(
-        "http://localhost:5000/api/items/edit/" + eachItem.id,
-        {
-          quantity: eachItem.quantity
+        Axios.post(
+          "http://localhost:5000/api/items/edit/" + eachItem._id,
+          {
+            theTitle: eachItem.name,
+            theDescription: eachItem.description,
+            itemCost: eachItem.cost,
+            retailPrice: eachItem.retailPrice,
+            quantity: eachItem.quantity
+          }
+        )
+          .then(() => {
+            console.log("hello");
+            this.setState({ allItems: editedItems });
+          })
+          .catch(() => {});
         }
-      )
-        .then(() => {
-          this.setState({ allItems:editedItems});
-        })
-        .catch(() => {
-
-        })
     })
   }
 
@@ -78,7 +86,7 @@ class ItemIndex extends Component {
 
     return allTheItems.map(eachItem => {
       // console.log(eachItem.quantity);
-      return <div className="eachItem">
+      return <div key={eachItem._id} className="eachItem">
           <h3>{eachItem.name}</h3>
           <h3 className="descriptionBox">{eachItem.description}</h3>
           <h3> {eachItem.itemCost}</h3>
