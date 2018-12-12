@@ -1,56 +1,61 @@
 import React, { Component } from 'react';
 import "../App.css";
-// import Axios from 'axios';
 import UserService from '../services/UserService';
-import { Link } from 'react-router-dom'
+
 
 
 class Login extends Component {
-  state = { usernameInput: '', passwordInput: '' };
+  state = {
+    username: '',
+    password: '',
+  }
   service = new UserService();
 
-
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value })
-  }
-
-
-  handleFormSubmit = (e) => {
+  formSubmit = (e) => {
     e.preventDefault();
-    // you could just do axios.post('http://localhost:5000/api/signup, {username: this.state.userNameInput, password: this.state.passWordInput}, {withCredentials: true})
-    this.service.login(this.state.usernameInput, this.state.passwordInput)
-      .then((userFromDB) => {
-        console.log('------------------------', userFromDB)
-        this.props.logTheUserIntoAppComponent(userFromDB)
-        // here we wait for the API to give us the user object back after logging in
-        // then we pass that user object back to app component
-        this.setState({ usernameInput: '', passwordInput: '' })
+    this.service.login(this.state.username, this.state.password)
 
-        this.props.history.push('/itemList');
+      // console.log('youyoyoyoyoyoyoy this is the formSubmit function to login')
+      .then((userFromDb) => {
+        this.setState({
+          username: '',
+          password: '',
+        })
+        this.props.logTheUserIntoAppComponent(userFromDb);
+        // console.log(this.state.username, this.state.password);        
 
 
       })
       .catch((err) => {
-        console.log('sorry something went wrong', err)
-
+        console.log('sorry something went wrong', err);
       })
+  }
+
+  changeTheInputText = (e) => {
+    // console.log('e.target.name ',e.target.name)
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
 
   }
 
+
+
+
   render() {
+    // console.log(this.state.username);
+    // console.log('this will be the password', this.state.password);
     return (
+
       <div>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input type="text" name="usernameInput" value={this.state.usernameInput} onChange={e => this.handleChange(e)} />
-
-          <label>Password:</label>
-          <input name="passwordInput" value={this.state.passwordInput} onChange={e => this.handleChange(e)} />
-
-          <input type="submit" value="Signup" />
+        <h1>this is the Login component that will speak to the /login route</h1>
+        <form onSubmit={this.formSubmit}>
+          <label>Username</label>
+          <input type='text' name='username' placeholder="put in your username" value={this.state.username} onChange={e => this.changeTheInputText(e)} /><br />
+          <label>Password</label>
+          <input type='text' name='password' placeholder="put in your password" value={this.state.password} onChange={e => this.changeTheInputText(e)} /><br />
+          <input type="submit" value="login" />
         </form>
-
-
       </div>
     )
   }
