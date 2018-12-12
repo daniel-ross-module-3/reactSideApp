@@ -19,74 +19,69 @@ library.add(faStroopwafel);
 library.add(faPen);
 
 
+
 class App extends Component {
   state = {
-    loggedInUser: null
+    loggedInUser: null,
   }
-  service = new UserService()
+
+  service = new UserService();
 
 
-  componentDidMount(props) {
+  componentDidMount(props){
     this.fetchUser();
   }
 
 
-  fetchUser() {
-    if (this.state.loggedInUser === null) {
+  fetchUser(){
+    if( this.state.loggedInUser === null ){
       this.service.loggedin()
-        .then(theActualUserFromDB => {
-          this.setState({
-            loggedInUser: theActualUserFromDB
-          })
+      .then(theActualUserFromDB =>{
+        this.setState({
+          loggedInUser:  theActualUserFromDB
+        }) 
 
-        })
-        .catch(err => {
-          console.log('catch getting hit', err)
-          this.setState({
-            loggedInUser: false
-          })
-        })
+      })
+      .catch( err =>{
+        console.log('catch getting hit', err)
+        this.setState({
+          loggedInUser:  false
+        }) 
+      })
     }
   }
 
   logInTheUser = (userToLogIn) => {
     // console.log('this is before',this.state.loggedInUser)
 
+ 
 
-
-    this.setState({ loggedInUser: userToLogIn })
+      this.setState({loggedInUser: userToLogIn })
     // console.log('this is after',this.state.loggedInUser)
 
   }
 
-  showUser = () => {
-    console.log(this)
-
-    if (this.state.loggedInUser) {
+  showUser = () =>{
+    if(this.state.loggedInUser){
       // console.log('you are logged in', this.state.loggedInUser)
-      return (
-        <div>
-
-        <h4>Welcome, {this.state.loggedInUser.username}</h4>
-
-        </div>
-        )
-    } else {
-      return (
-        <div className="applicationInfoDiv">
-
-          <div className="paragraphAboutApp">
-
-            <h1>Welcome</h1>
-            <p className="paragraphAboutAppText">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      return(
+        <h4>Welcome, {this.state.loggedInUser.username}</h4>)
+    }else{
+          return(
+            <div className="applicationInfoDiv">
+             
+              <div className="paragraphAboutApp">
+               
+                <h1>Welcome</h1>
+                <p className="paragraphAboutAppText">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
-          </div>
-        </div>
+              </div>
+            </div>
 
-      )
-
-
+          )
+      
+      
     }
   }
 
@@ -97,29 +92,42 @@ class App extends Component {
   //   })
   // }
 
-  logout = () => {
-    this.service.logout().then(() => {
-      this.setState({ loggedInUser: null });
+  logout = () =>{
+    this.service.logout().then(()=>{
+      this.setState({loggedInUser: null});
       console.log('you triggered the logout function', this.state.loggedInUser);
     })
   }
-  render() {
-    return <div className="App">
-      <Navbar logUserOut={this.logout}/>
-          {this.showUser()}
+
+  
+  
+    render() {
+     console.log(this);
+    return (
+     <div className="App">
+      <Navbar logUserOut={this.logout} loggedIn={this.state.loggedInUser}/>
+      <h3>Inventory Management Assistant</h3>
+         
+       
 
 
-{/* -=-=-=-=-= ROUTES ROOM   =-=--=-=-=-=*/}
         <Switch>
+          <Route path="/user/login" render={(props) =>  <Login   {...props} logTheUserIntoAppComponent = {this.logInTheUser} loggedIn={this.state.loggedInUser}/> } />
+
+          <Route path="/user/signup" render = {(props)=>    <Signup {...props} logTheUserIntoAppComponent =   {this.logInTheUser} />  } />
+
+
           <Route path="/itemList" render={props => <ItemIndex {...props} currentUser ={this.state.loggedInUser} />} />
-        <Route path="/items/details/:id" component={itemDetails} />
 
-        <Route path="/user/login" render={(props) => <Login   {...props} logTheUserIntoAppComponent={this.logInTheUser} />} />
+          <Route path="/items/details/:id" component={itemDetails} />
 
-        <Route path="/user/signup" render={(props) => <Signup {...props} logTheUserIntoAppComponent={this.logInTheUser} />} />
+        
+
         </Switch>
- {/* -==--==--=-=ROUTES ROOM ENDS -=-==--=-=-= */}
-      </div>;
+        <div>{this.showUser()}</div>
+     
+      </div>
+    )
   }
 }
 
