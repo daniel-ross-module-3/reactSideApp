@@ -14,6 +14,7 @@ class Signup extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
+  
 
   handleFormSubmit = (e) => {
     e.preventDefault();
