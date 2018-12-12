@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import "../App.css";
 import {Route, Switch, Link} from 'react-router-dom';
 
+
 class Navbar extends Component{
 
   showCorrectNavLinks = ()=>{
@@ -16,6 +17,7 @@ class Navbar extends Component{
         <Link to="/">Home Page</Link> 
         <Link to="/user/login">Log in </Link> 
         <Link to="/user/signup">Sign Up </Link>
+        
        </nav>
        </div>
        </div>
@@ -30,6 +32,9 @@ class Navbar extends Component{
         <Link to="/">Home Page</Link> 
         <Link to="/itemList">View item list</Link>
         <Link to="/user/login" onClick={this.props.logUserOut}> Logout </Link>
+        <Link to="/itemList">View Inventory</Link>
+          <Link to="/employeeList">View Employee list</Link>
+        <Link to="/findingEmployee">Employee Dashboard</Link>
         </nav>
        </div>
        </div>

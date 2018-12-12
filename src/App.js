@@ -9,6 +9,8 @@ import itemDetails from "./components/itemDetails";
 import Signup from "./components/Signup";
 import UserService from "./services/UserService";
 import Login from "./components/Login";
+import EmployeeList from "./components/EmployeeList";
+import FindEmployee from "./components/EmployeeDetail"
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -99,35 +101,28 @@ class App extends Component {
     })
   }
 
-  
-  
-    render() {
-     console.log(this);
-    return (
-     <div className="App">
+  render() {
+    return <div className="App">
       <Navbar logUserOut={this.logout} loggedIn={this.state.loggedInUser}/>
-      <h3>Inventory Management Assistant</h3>
-         
-       
+        {this.showUser()}
 
-
+        {/* -=-=-=-=-= ROUTES ROOM   =-=--=-=-=-=*/}
         <Switch>
-          <Route path="/user/login" render={(props) =>  <Login   {...props} logTheUserIntoAppComponent = {this.logInTheUser} loggedIn={this.state.loggedInUser}/> } />
+          <Route path="/itemList" render={props => <ItemIndex {...props} currentUser={this.state.loggedInUser} />} />
 
-          <Route path="/user/signup" render = {(props)=>    <Signup {...props} logTheUserIntoAppComponent =   {this.logInTheUser} />  } />
+          <Route path="/employeeList" render={props => <EmployeeList {...props} currentUser={this.state.loggedInUser} />} />
 
-
-          <Route path="/itemList" render={props => <ItemIndex {...props} currentUser ={this.state.loggedInUser} />} />
+          <Route path="/findingEmployee" render={props => <FindEmployee {...props} currentUser={this.state.loggedInUser} />} />
 
           <Route path="/items/details/:id" component={itemDetails} />
 
-        
+          <Route path="/user/login" render={props => <Login {...props} logTheUserIntoAppComponent={this.logInTheUser} />} />
 
+          <Route path="/user/signup" render={props => <Signup {...props} logTheUserIntoAppComponent={this.logInTheUser} />} />
         </Switch>
-        <div>{this.showUser()}</div>
-     
-      </div>
-    )
+        {/* -==--==--=-=ROUTES ROOM ENDS -=-==--=-=-= */}
+      </div>;
+
   }
 }
 
