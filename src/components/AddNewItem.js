@@ -10,6 +10,7 @@ class AddNewItem extends Component {
     theDescription: '',
     itemCost: 0,
     retailInput: 0,
+    quantity: 0
 
   }
 
@@ -24,12 +25,15 @@ class AddNewItem extends Component {
     const newDescription = this.state.theDescription;
     const newCost = this.state.itemCost;
     const newretailInput = this.state.retailInput;
+    const newQuantity = this.state.quantity
  
     Axios.post("http://localhost:5000/api/items/add-new",
       { theTitle: newName, 
         theDescription: newDescription , 
         itemCost: newCost, 
-        retailPrice:newretailInput},
+        retailPrice:newretailInput,
+        quantity: newQuantity},
+
       { withCredentials: true })
       .then((responeFromOurAPI) => {
         // console.log("-==--=-=",this.state.retailPrice)
@@ -65,6 +69,9 @@ class AddNewItem extends Component {
           <label>Retail Price</label>
           <input type="number"  value={this.state.retailInput} id="retailInput" onChange={this.updateInput} />
 
+
+        <label>Quantity in Stock</label>
+        <input type="number" value={this.state.quantity} id="quantity" onChange={this.updateInput} />
           <button>Save</button>
         </form>
       </div>;
