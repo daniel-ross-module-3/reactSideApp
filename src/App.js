@@ -9,6 +9,8 @@ import itemDetails from "./components/itemDetails";
 import Signup from "./components/Signup";
 import UserService from "./services/UserService";
 import Login from "./components/Login";
+import EmployeeList from "./components/EmployeeList";
+import FindEmployee from "./components/EmployeeDetail"
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -105,20 +107,24 @@ class App extends Component {
   }
   render() {
     return <div className="App">
-      <Navbar logUserOut={this.logout}/>
-          {this.showUser()}
+        <Navbar logUserOut={this.logout} />
+        {this.showUser()}
 
-
-{/* -=-=-=-=-= ROUTES ROOM   =-=--=-=-=-=*/}
+        {/* -=-=-=-=-= ROUTES ROOM   =-=--=-=-=-=*/}
         <Switch>
-          <Route path="/itemList" render={props => <ItemIndex {...props} currentUser ={this.state.loggedInUser} />} />
-        <Route path="/items/details/:id" component={itemDetails} />
+          <Route path="/itemList" render={props => <ItemIndex {...props} currentUser={this.state.loggedInUser} />} />
 
-        <Route path="/user/login" render={(props) => <Login   {...props} logTheUserIntoAppComponent={this.logInTheUser} />} />
+          <Route path="/employeeList" render={props => <EmployeeList {...props} currentUser={this.state.loggedInUser} />} />
 
-        <Route path="/user/signup" render={(props) => <Signup {...props} logTheUserIntoAppComponent={this.logInTheUser} />} />
+          <Route path="/findingEmployee" render={props => <FindEmployee {...props} currentUser={this.state.loggedInUser} />} />
+
+          <Route path="/items/details/:id" component={itemDetails} />
+
+          <Route path="/user/login" render={props => <Login {...props} logTheUserIntoAppComponent={this.logInTheUser} />} />
+
+          <Route path="/user/signup" render={props => <Signup {...props} logTheUserIntoAppComponent={this.logInTheUser} />} />
         </Switch>
- {/* -==--==--=-=ROUTES ROOM ENDS -=-==--=-=-= */}
+        {/* -==--==--=-=ROUTES ROOM ENDS -=-==--=-=-= */}
       </div>;
   }
 }
