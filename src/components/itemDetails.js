@@ -33,6 +33,7 @@ class itemDetail extends Component {
           descInput: theThingIGetBackFromApi.data.description,
           itemCost: theThingIGetBackFromApi.data.itemCost,
           retailPrice: theThingIGetBackFromApi.data.retailPrice,
+          quantity:theThingIGetBackFromApi.data.quantity
         })
 
       }).catch(() => {
@@ -86,16 +87,16 @@ class itemDetail extends Component {
 
         // console.log("=--=-==-=--=-=")
         return <div>
-            <h1>HELLO ITEM DETAIL</h1>
-            <span>
+            <h3>
               item Name:
               {this.state.nameInput}
-            </span>
+            </h3>
             <br />
-            <span> item Description :{this.state.descInput}</span>
+            <h3> item Description :{this.state.descInput}</h3>
             <br />
-            <p>item Cost : {this.state.itemCost}</p>
-            <p>item Retail price :{this.state.retailPrice}</p>
+            <h3>item Cost :  ${this.state.itemCost}</h3>
+            <h3>item Retail price : ${this.state.retailPrice}</h3>
+            <h3>Amount in Stock : {this.state.quantity} units</h3>
             {/* <div>
         <FontAwesomeIcon className="iconSize" icon="pencil-alt" />
             </div> */}
@@ -127,13 +128,8 @@ class itemDetail extends Component {
     console.log(this.state)
     return (
       <div>
-        <h1> Item Details Page</h1>
         {this.showItemDetails()}
 
-        <br />
-        <br />
-        <br />
-        <br />
         <div>
           <button onClick={this.deleteItem} className="delete">Delete This Item</button>
         </div>

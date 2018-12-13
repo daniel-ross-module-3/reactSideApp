@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Route, Switch, Link } from 'react-router-dom';
 
-import Navbar from './components/Navbar'
+import NavbarComponent from "./components/Navbar";
 import ItemIndex from "./components/itemIndex";
 import itemDetails from "./components/itemDetails";
 import Signup from "./components/Signup";
@@ -109,7 +109,7 @@ class App extends Component {
 
   render() {
     return <div className="App">
-      <Navbar logUserOut={this.logout} loggedIn={this.state.loggedInUser}/>
+        <NavbarComponent logUserOut={this.logout} loggedIn={this.state.loggedInUser} />
         {this.showUser()}
 
         {/* -=-=-=-=-= ROUTES ROOM   =-=--=-=-=-=*/}
