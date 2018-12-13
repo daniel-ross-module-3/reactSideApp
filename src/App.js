@@ -10,6 +10,9 @@ import Signup from "./components/Signup";
 import UserService from "./services/UserService";
 import Login from "./components/Login";
 import User from "./components/User";
+import EmployeeList from "./components/EmployeeList";
+import FindEmployee from "./components/EmployeeDetail";
+
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStroopwafel } from "@fortawesome/free-solid-svg-icons";
@@ -52,9 +55,11 @@ class App extends Component {
   }
 
   logInTheUser = (userToLogIn) => {
-    // console.log('this is before',this.state.loggedInUser)
+    console.log('=--=-=-=-=-=',userToLogIn)
+    if(!userToLogIn){
+  this.setState({loggedInUser: null})
+}
 
- 
 
       this.setState({loggedInUser: userToLogIn })
     // console.log('this is after',this.state.loggedInUser)
@@ -101,37 +106,33 @@ class App extends Component {
     })
   }
 
-  
-  
-    render() {
-     console.log(this);
-    return (
-     <div className="App">
+  render() {
+    return <div className="App">
       <Navbar logUserOut={this.logout} loggedIn={this.state.loggedInUser}/>
-      <h3>Inventory Management Assistant</h3>
-         
-       
+        {this.showUser()}
 
-
+        {/* -=-=-=-=-= ROUTES ROOM   =-=--=-=-=-=*/}
         <Switch>
-          <Route path="/user/login" render={(props) =>  <Login   {...props} logTheUserIntoAppComponent = {this.logInTheUser} loggedIn={this.state.loggedInUser}/> } />
+          <Route path="/itemList" render={props => <ItemIndex {...props} currentUser={this.state.loggedInUser} />} />
 
-          <Route path="/user/signup" render = {(props)=>    <Signup {...props} logTheUserIntoAppComponent =   {this.logInTheUser} />  } />
+          <Route path="/employeeList" render={props => <EmployeeList {...props} currentUser={this.state.loggedInUser} />} />
 
-
-          <Route path="/itemList" render={props => <ItemIndex {...props} currentUser ={this.state.loggedInUser} />} />
+          <Route path="/findingEmployee" render={props => <FindEmployee {...props} currentUser={this.state.loggedInUser} />} />
 
           <Route path="/items/details/:id" component={itemDetails} />
           
         <Route path="/userHomePage" render={props => <User {...props} currentUser= {this.state.loggedInUser}/> } />
 
-        
+          <Route path="/user/login" render={props => <Login {...props} logTheUserIntoAppComponent={this.logInTheUser} />} />
 
+          <Route path="/user/signup" render={props => <Signup {...props} logTheUserIntoAppComponent={this.logInTheUser} />} />
         </Switch>
+
         {this.showUser()}
      
       </div>
     )
+
   }
 }
 
