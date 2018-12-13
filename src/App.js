@@ -54,9 +54,11 @@ class App extends Component {
   }
 
   logInTheUser = (userToLogIn) => {
-    // console.log('this is before',this.state.loggedInUser)
+    console.log('=--=-=-=-=-=',userToLogIn)
+    if(!userToLogIn){
+  this.setState({loggedInUser: null})
+}
 
- 
 
       this.setState({loggedInUser: userToLogIn })
     // console.log('this is after',this.state.loggedInUser)

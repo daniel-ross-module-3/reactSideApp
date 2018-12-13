@@ -45,6 +45,16 @@ showEmployeeDetails=()=>{
       )
 }
 }
+getTime=()=>{
+  var currentdate = new Date();
+  var datetime = + currentdate.getDate() + "/"
+    + (currentdate.getMonth() + 1) + "/"
+    + currentdate.getFullYear() + " @ "
+    + currentdate.getHours() + ":"
+    + currentdate.getMinutes() + ":"
+    + currentdate.getSeconds();
+  console.log(datetime)
+}
 
 
   render() {
@@ -55,6 +65,9 @@ showEmployeeDetails=()=>{
           <input id="employeeKey" value={this.state.employeeKey} onChange={this.updateForm} />
 
         <button>Submit</button>
+
+        <button onClick={this.getTime}>Clock In</button>
+        <button onClick={this.getTime}>Clock Out</button>
         </form>
 
 
