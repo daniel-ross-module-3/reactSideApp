@@ -9,7 +9,7 @@ import itemDetails from "./components/itemDetails";
 import Signup from "./components/Signup";
 import UserService from "./services/UserService";
 import Login from "./components/Login";
-
+import User from "./components/User";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStroopwafel } from "@fortawesome/free-solid-svg-icons";
@@ -62,11 +62,9 @@ class App extends Component {
   }
 
   showUser = () =>{
-    if(this.state.loggedInUser){
+    if(!this.state.loggedInUser){
       // console.log('you are logged in', this.state.loggedInUser)
-      return(
-        <h4>Welcome, {this.state.loggedInUser.username}</h4>)
-    }else{
+     
           return(
             <div className="applicationInfoDiv">
              
@@ -82,6 +80,10 @@ class App extends Component {
           )
       
       
+    }else{
+      return(
+        <div>welcome, {this.state.loggedInUser}</div>
+      )
     }
   }
 
@@ -120,11 +122,13 @@ class App extends Component {
           <Route path="/itemList" render={props => <ItemIndex {...props} currentUser ={this.state.loggedInUser} />} />
 
           <Route path="/items/details/:id" component={itemDetails} />
+          
+        <Route path="/userHomePage" render={props => <User {...props} currentUser= {this.state.loggedInUser}/> } />
 
         
 
         </Switch>
-        <div>{this.showUser()}</div>
+        {this.showUser()}
      
       </div>
     )
