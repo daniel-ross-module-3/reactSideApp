@@ -16,21 +16,54 @@ class ItemIndex extends Component {
   };
   componentWillMount() {
     this.fetchItems();
+  
   }
   fetchItems = () => {
     
     Axios.get("http://localhost:5000/api/items",
     {withCredentials: true})
       .then(responseFromApi => {
-        console.log("9090909090",responseFromApi);
-        this.setState({ allTheItems: responseFromApi.data.reverse() });
+        // console.log("9090909090",responseFromApi);
+        this.setState({ allTheItems: responseFromApi.data.reverse() }, () => {this.costingNumbers() }, () => {
+          this.retailNumbers()});
       })
       .catch(err => {});
   };
+
+
+  costingNumbers=()=>{
+   const total =  this.state.allTheItems.reduce((acc,current)=>{
+    //  if(!acc){
+    //    return current.itemCost
+    //  }
+      return current.itemCost * current.quantity +acc
+
+    },0)
+    const retail = this.state.allTheItems.reduce((acc,current)=>{
+      // if (!acc) {
+      //   return current.retailPrice
+      // }
+      return current.retailPrice * current.quantity + acc;
+    },0)
+
+    const totalUnits = this.state.allTheItems.reduce((acc,current)=>{
+      // if (!acc) {
+      //   return current.quantity
+      // }
+      return current.quantity+acc
+    },0)
+    this.setState({
+      totalItemCost: total,
+      totalRetailPrice: retail,
+      totalUnitsAmount: totalUnits
+    })
+    
+  }
+
   showAllItems = () => {
     //this.fetchItems()
     const allTheItems = this.state.allTheItems;
-    console.log("==========",allTheItems)
+    // console.log("==========",allTheItems)
 
     return allTheItems.map(eachItem => {
       // console.log(eachItem.quantity);
@@ -42,8 +75,7 @@ class ItemIndex extends Component {
           <td>
             <Button bsStyle="warning" onClick={() => this.changeQuanity(-1, eachItem)}>
               -
-            </Button>
-            {eachItem.quantity} <Button bsStyle="warning" onClick={() => this.changeQuanity(1, eachItem)}>
+            </Button>{eachItem.quantity}<Button bsStyle="warning" onClick={() => this.changeQuanity(1, eachItem)}>
               +
             </Button>
           </td>
@@ -83,8 +115,9 @@ class ItemIndex extends Component {
           }
         )
           .then(() => {
-            console.log("hello");
-            this.setState({ allItems: editedItems });
+            // console.log("hello");
+            // this.setState({ allItems: editedItems });
+            this.fetchItems();
           })
           .catch(() => {});
         }
@@ -101,20 +134,17 @@ class ItemIndex extends Component {
   };
 
 showNumbers=()=>{
-  return (
-    <tr>
+  return <tr>
       <td>--</td>
-      <td>--</td>
-      <td>--</td>
-      <td>--</td>
-      <td>--</td>
-      
-    </tr>
-  )
+       <td>--</td>
+      <td>{this.state.totalItemCost}</td>
+    <td>{this.state.totalRetailPrice}</td>
+      <td>{this.state.totalUnitsAmount}</td> 
+    </tr>;
 }
 
   render() {
-    // console.log(this.props)
+    // console.log(this.state)
 
     return <div>
         <Table striped bordered condensed hover>
