@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import "../App.css";
 import Axios from 'axios';
 import { Route, Switch, Link } from 'react-router-dom';
-
+import Table from "react-bootstrap/lib/Table";
+import { Button } from "react-bootstrap";
 import AddNewEmployee from './AddNewEmployee';
+
 
 
 class EmployeeList extends Component {
@@ -31,17 +33,15 @@ class EmployeeList extends Component {
 
     return allTheEmployees.map(eachEmployee => {
       // console.log(eachEmployee);
-      return (
-        <div key={eachEmployee} className="eachEmployee">
-          <h3>{eachEmployee.employeeName}</h3>
-          <h3 className="descriptionBox">{eachEmployee.employeeKey}</h3>
-          <h3> {eachEmployee.payRate}</h3>
-          <h3> {eachEmployee.position}</h3>
-          {/* <h3>
-            <Link to={`/items/details/${eachEmployee._id}`}>See Details</Link>
-          </h3> */}
-        </div>
-      );
+      return <tr key={eachEmployee}>
+          <td>{eachEmployee.employeeName}</td>
+          <td>{eachEmployee.employeeKey}</td>
+          <td>{eachEmployee.payRate}</td>
+          <td>{eachEmployee.position}</td>
+          <Button bsStyle="info">
+          <Link to={`/employeeFind/${eachEmployee.employeeKey}`}>Check Employee Shifts</Link>
+          </Button>
+        </tr>;
     });
   };
 
@@ -55,21 +55,23 @@ class EmployeeList extends Component {
   render() {
     // console.log("0--0=-=-",this.showAllEmployees())
 
-    return (<div>
-      <div>
-        <div className="eachEmployee">
-          <h3>Employee Name</h3>
-          <h3   >Employee Key</h3>
-          <h3>Employee Pay Rate</h3>
-          <h3>employee Position</h3>
-          <h3>See Details </h3>
-        </div>
-        <h3>{this.showAllEmployees()}</h3>
-      </div>
+    return (
+    <div>
+        <Table striped bordered condensed hover>
+          <thead>
+            <tr>
+              <th>Employee Name</th>
+              <th>Employee Key</th>
+              <th>Employee Pay Rate</th>
+              <th>Employee Position</th>
+              <th>Employee Details</th>
 
-      {/* <div>
-          {this.showAllEmployees()}
-        </div> */}
+            </tr>
+          </thead>
+          <tbody>
+            {this.showAllEmployees()}
+          </tbody>
+        </Table>
       <div>
         <AddNewEmployee addItemToState={this.addItemToState} />
       </div>

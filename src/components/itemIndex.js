@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import "../App.css";
 import Axios from 'axios';
 import { Route, Switch, Link } from 'react-router-dom';
+import Table from "react-bootstrap/lib/Table";
+import { Button } from "react-bootstrap";
+import ModalComponent from "./ModalComponent";
 
 import AddNewItem from './AddNewItem';
 
@@ -31,21 +34,27 @@ class ItemIndex extends Component {
 
     return allTheItems.map(eachItem => {
       // console.log(eachItem.quantity);
-      return <div key={eachItem._id} className="eachItem">
-        <h3>{eachItem.name}</h3>
-        <h3 className="descriptionBox">{eachItem.description}</h3>
-        <h3> {eachItem.itemCost}</h3>
-        <h3> {eachItem.retailPrice}</h3>
-        <h3>
-          <button onClick={() => this.changeQuanity(-1, eachItem)}>-</button>
-          {eachItem.quantity}
-          <button onClick={() => this.changeQuanity(1, eachItem)}>+</button>
-          {/* why is it being called before of the click action? how to make it add on the back end aswell!?  */}
-        </h3>
-        <button>
+      return <tr key={eachItem._id}>
+          <td>{eachItem.name}</td>
+          <td>{eachItem.description}</td>
+          <td>{eachItem.itemCost}</td>
+          <td>{eachItem.retailPrice}</td>
+          <td>
+            <Button bsStyle="warning" onClick={() => this.changeQuanity(-1, eachItem)}>
+              -
+            </Button>
+            {eachItem.quantity} <Button bsStyle="warning" onClick={() => this.changeQuanity(1, eachItem)}>
+              +
+            </Button>
+          </td>
+          <Link to={`/items/details/${eachItem._id}`}>
+            <Button bsStyle="info">Info</Button>
+          </Link>
+          {/* <button>
           <Link to={`/items/details/${eachItem._id}`}>Edit Item</Link>
-        </button>
-      </div>;
+        </button> */}
+        </tr>;
+         
     });
   };
   changeQuanity = (num, item) => {
@@ -91,31 +100,62 @@ class ItemIndex extends Component {
     this.setState({ allTheItems: allItems });
   };
 
+showNumbers=()=>{
+  return (
+    <tr>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      
+    </tr>
+  )
+}
+
   render() {
     // console.log(this.props)
 
-    return (
-      <div>
-        <div>
-          <div className="eachItem">
-            <h3>Name</h3>
-            <h3 className="descriptionBox">Description</h3>
-            <h3>Cost in U$</h3>
-            <h3>Retail Price in U$</h3>
-            <h3>Amount in Stock</h3>
-            <h3>See Details </h3>
-          </div>
-          <h3>{this.showAllItems()}</h3>
-        </div>
-
-        {/* <div>
+    return <div>
+        <Table striped bordered condensed hover>
+          <thead>
+            <tr>
+              <th>Item Name</th>
+              <th>Description</th>
+              <th>Cost in U$</th>
+              <th>Retail Price</th>
+              <th>Amount in Stock</th>
+              <th>See Details</th>
+            </tr>
+          </thead>
+          <tbody>
           {this.showAllItems()}
-        </div> */}
+        
+            <tr>
+              <th>--</th>
+              <th>--</th>
+              <th>Full Inventory Cost</th>
+              <th>Full Inventory Value</th>
+              <th>Full Inventory Amount of Units</th>
+              <th>--</th>
+
+            </tr>
+            
+          </tbody>
+          
+        <tfoot>
+          {this.showNumbers()}
+        </tfoot>
+          
+        </Table>
+
+      <div className="App">
+        <ModalComponent />
+      </div>
         <div>
           <AddNewItem addItemToState={this.addItemToState} />
         </div>
-      </div>
-    );
+      </div>;
   }
 }
 export default ItemIndex;
