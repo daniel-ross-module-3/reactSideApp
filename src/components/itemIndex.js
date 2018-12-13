@@ -13,38 +13,41 @@ class ItemIndex extends Component {
   };
   componentWillMount() {
     this.fetchItems();
-    this.changeQuanity();
   }
-
   fetchItems = () => {
-    Axios.get("http://localhost:5000/api/items")
+    
+    Axios.get("http://localhost:5000/api/items",
+    {withCredentials: true})
       .then(responseFromApi => {
+        console.log("9090909090",responseFromApi);
         this.setState({ allTheItems: responseFromApi.data.reverse() });
       })
       .catch(err => {});
   };
-  addQuantity = e => {
-    this.state.allTheItems.map((eachItem)=>{
-      return (
-        // e.preventDefault();
-        Axios.post(
-          "http://localhost:5000/api/items/edit/" + eachItem.id,
-          {
-            quantity: this.state.quantity + 1
-          }
-          )
-          .then(() => {
-            this.setState({ editing: false });
-          })
-          .catch(() => {
+  showAllItems = () => {
+    //this.fetchItems()
+    const allTheItems = this.state.allTheItems;
+    console.log("==========",allTheItems)
 
-          })
-          )
-      
-    })
+    return allTheItems.map(eachItem => {
+      // console.log(eachItem.quantity);
+      return <div key={eachItem._id} className="eachItem">
+        <h3>{eachItem.name}</h3>
+        <h3 className="descriptionBox">{eachItem.description}</h3>
+        <h3> {eachItem.itemCost}</h3>
+        <h3> {eachItem.retailPrice}</h3>
+        <h3>
+          <button onClick={() => this.changeQuanity(-1, eachItem)}>-</button>
+          {eachItem.quantity}
+          <button onClick={() => this.changeQuanity(1, eachItem)}>+</button>
+          {/* why is it being called before of the click action? how to make it add on the back end aswell!?  */}
+        </h3>
+        <button>
+          <Link to={`/items/details/${eachItem._id}`}>Edit Item</Link>
+        </button>
+      </div>;
+    });
   };
-
-
   changeQuanity = (num, item) => {
 
     // console.log("something")
@@ -79,30 +82,7 @@ class ItemIndex extends Component {
     })
   }
 
-  showAllItems = () => {
-    //this.fetchItems()
-    const allTheItems = this.state.allTheItems;
-    // console.log(allTheItems)
 
-    return allTheItems.map(eachItem => {
-      // console.log(eachItem.quantity);
-      return <div key={eachItem._id} className="eachItem">
-          <h3>{eachItem.name}</h3>
-          <h3 className="descriptionBox">{eachItem.description}</h3>
-          <h3> {eachItem.itemCost}</h3>
-          <h3> {eachItem.retailPrice}</h3>
-          <h3>
-          <button onClick={() => this.changeQuanity(-1, eachItem)}>-</button>
-            {eachItem.quantity}
-            <button onClick={() => this.changeQuanity(1, eachItem)}>+</button>
-            {/* why is it being called before of the click action? how to make it add on the back end aswell!?  */}
-          </h3>
-          <button>
-            <Link to={`/items/details/${eachItem._id}`}>Edit Item</Link>
-          </button>
-        </div>;
-    });
-  };
 
   addItemToState = item => {
     // console.log(item);

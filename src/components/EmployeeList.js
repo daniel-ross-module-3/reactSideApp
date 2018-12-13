@@ -15,8 +15,10 @@ class EmployeeList extends Component {
   }
 
   fetchEmployees = () => {
-    Axios.get("http://localhost:5000/api/employeeList")
+    console.log("hello")
+    Axios.get("http://localhost:5000/api/employeeList", {withCredentials: true})
       .then(responseFromApi => {
+        console.log('=-=--=-=-=-=-=-=-',responseFromApi)
         this.setState({ allTheEmployees: responseFromApi.data.reverse() });
       })
       .catch(err => { });
@@ -30,7 +32,7 @@ class EmployeeList extends Component {
     return allTheEmployees.map(eachEmployee => {
       // console.log(eachEmployee);
       return (
-        <div className="eachEmployee">
+        <div key={eachEmployee} className="eachEmployee">
           <h3>{eachEmployee.employeeName}</h3>
           <h3 className="descriptionBox">{eachEmployee.employeeKey}</h3>
           <h3> {eachEmployee.payRate}</h3>
@@ -51,13 +53,13 @@ class EmployeeList extends Component {
   }
 
   render() {
-    // console.log(this.props)
+    // console.log("0--0=-=-",this.showAllEmployees())
 
-    return <div>
+    return (<div>
       <div>
         <div className="eachEmployee">
           <h3>Employee Name</h3>
-          <h3 className="descriptionBox">Employee Key</h3>
+          <h3   >Employee Key</h3>
           <h3>Employee Pay Rate</h3>
           <h3>employee Position</h3>
           <h3>See Details </h3>
@@ -71,7 +73,8 @@ class EmployeeList extends Component {
       <div>
         <AddNewEmployee addItemToState={this.addItemToState} />
       </div>
-    </div>;
+    </div>
+    )
   }
 }
 export default EmployeeList;

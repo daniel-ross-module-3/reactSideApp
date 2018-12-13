@@ -30,10 +30,14 @@ class Navbar extends Component{
         <nav className="nav-link-container">
         <p>Logo</p>
         <Link to="/">Home Page</Link> 
-        <Link to="/itemList">View item list</Link>
+        <br/>
+        {/* <Link to="/itemList">View item list</Link> */}
         <Link to="/user/login" onClick={this.props.logUserOut}> Logout </Link>
+        <br/>
         <Link to="/itemList">View Inventory</Link>
+        <br/>
           <Link to="/employeeList">View Employee list</Link>
+          <br/>
         <Link to="/findingEmployee">Employee Dashboard</Link>
         </nav>
        </div>
