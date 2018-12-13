@@ -9,13 +9,11 @@ import itemDetails from "./components/itemDetails";
 import Signup from "./components/Signup";
 import UserService from "./services/UserService";
 import Login from "./components/Login";
-<<<<<<< HEAD
+
 import User from "./components/User";
-=======
+
 import EmployeeList from "./components/EmployeeList";
 import FindEmployee from "./components/EmployeeDetail"
-
->>>>>>> d07553e15b8dd7e0afa3fc11bbffd3c10954d4e3
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStroopwafel } from "@fortawesome/free-solid-svg-icons";
@@ -130,16 +128,10 @@ class App extends Component {
 
           <Route path="/user/signup" render={props => <Signup {...props} logTheUserIntoAppComponent={this.logInTheUser} />} />
         </Switch>
-<<<<<<< HEAD
-        {this.showUser()}
+
      
       </div>
-    )
-=======
-        {/* -==--==--=-=ROUTES ROOM ENDS -=-==--=-=-= */}
-      </div>;
 
->>>>>>> d07553e15b8dd7e0afa3fc11bbffd3c10954d4e3
   }
 }
 
