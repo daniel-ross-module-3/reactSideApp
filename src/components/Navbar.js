@@ -17,13 +17,13 @@ class NavbarComponent extends Component{
               <div className="link-holder">
               <Link to="/">
                 {" "}
-                <Button bsStyle="warning"> Home Page</Button>{" "}
+                <Button bsStyle="warning"> Home</Button>{" "}
               </Link>
               <Link to="/user/login">
-              <Button bsStyle="warning">Log In</Button>
+              <Button bsStyle="warning">Login</Button>
               </Link>
               <Link to="/user/signup">
-              <Button bsStyle="warning">Sign Up</Button>
+              <Button bsStyle="warning">Signup</Button>
               </Link>
               </div>
             </Navbar>
@@ -36,10 +36,10 @@ class NavbarComponent extends Component{
       return <div>
           <div className="navbar-div">
             <Navbar>
-              <p>Logo</p> 
-              <div>Signed in as: {this.props.userName.username}</div>
+            <img src='/LogoMakr_8jVCA6.png' className="app-logo @keyframes App-logo-spin"/> 
+              <div className="usernameNav">Signed in as: {" " + this.props.userName.username}</div>
               <Link to="/">
-                <Button bsStyle="warning">Home Page</Button>
+                <Button bsStyle="warning">Home</Button>
               </Link> <br />
               
               <Link to="/user/login" onClick={this.props.logUserOut}>
@@ -48,15 +48,15 @@ class NavbarComponent extends Component{
               </Link>
               <br />
               <Link to="/itemList">
-                <Button bsStyle="warning">View Inventory</Button>
+                <Button bsStyle="warning">Inventory</Button>
               </Link>
               <br />
               <Link to="/employeeList">
-              <Button bsStyle="warning">View Employee list</Button>
+              <Button bsStyle="warning">Employees</Button>
               </Link>
               <br />
               <Link to="/findingEmployee">
-              <Button bsStyle="warning">Employee Dashboard</Button>
+              <Button bsStyle="warning">Dashboard</Button>
               </Link>
             </Navbar>
           </div>

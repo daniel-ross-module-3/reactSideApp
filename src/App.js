@@ -107,7 +107,7 @@ class App extends Component {
   render() {
     return <div className="App">
         <NavbarComponent logUserOut={this.logout} loggedIn={this.state.loggedInUser} userName={this.state.loggedInUser}/>
-        {this.showUser()}
+        {/* {this.showUser()} */}
 
         {/* -=-=-=-=-= ROUTES ROOM   =-=--=-=-=-=*/}
         <Switch>
