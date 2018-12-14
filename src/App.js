@@ -2,18 +2,15 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Route, Switch, Link } from 'react-router-dom';
-
 import NavbarComponent from "./components/Navbar";
 import ItemIndex from "./components/itemIndex";
 import itemDetails from "./components/itemDetails";
 import Signup from "./components/Signup";
 import UserService from "./services/UserService";
 import Login from "./components/Login";
-
 import User from "./components/User";
-
 import EmployeeList from "./components/EmployeeList";
-import FindEmployee from "./components/EmployeeDetail"
+import FindEmployee from "./components/EmployeeDetail";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStroopwafel } from "@fortawesome/free-solid-svg-icons";
@@ -105,12 +102,15 @@ class App extends Component {
   }
 
   render() {
-    return <div className="App">
-        <NavbarComponent logUserOut={this.logout} loggedIn={this.state.loggedInUser} userName={this.state.loggedInUser}/>
-        {/* {this.showUser()} */}
+    return (
+      <div>
 
-        {/* -=-=-=-=-= ROUTES ROOM   =-=--=-=-=-=*/}
-        <Switch>
+            <NavbarComponent 
+            logUserOut={this.logout} 
+            loggedIn={this.state.loggedInUser} 
+            userName={this.state.loggedInUser} />
+            
+            <Switch>
           <Route path="/itemList" render={props => <ItemIndex {...props} currentUser={this.state.loggedInUser} />} />
 
           <Route path="/employeeList" render={props => <EmployeeList {...props} currentUser={this.state.loggedInUser} />} />
@@ -124,11 +124,11 @@ class App extends Component {
           <Route path="/user/login" render={props => <Login {...props} logTheUserIntoAppComponent={this.logInTheUser} />} />
 
           <Route path="/user/signup" render={props => <Signup {...props} logTheUserIntoAppComponent={this.logInTheUser} />} />
-        </Switch>
-
-     
-      </div>
-
+          
+          </Switch>
+     </div>
+        
+    )
   }
 }
 
