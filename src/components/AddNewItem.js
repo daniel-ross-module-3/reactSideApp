@@ -55,24 +55,28 @@ class AddNewItem extends Component {
     // console.log("================", this.state)
     return <div>
         <h2>Add New Item</h2>
-        <form onSubmit={this.createANewItem}>
+        <form className="formFormat" onSubmit={this.createANewItem}>
           <label>Name</label>
           <input type="text" value={this.state.theName} id="theName" onChange={this.updateInput} />
-
+<br/>
           <label>Description</label>
           <input type="text" value={this.state.theDescription} id="theDescription" onChange={this.updateInput} />
-
+<br/>
 
         <label>itemCost</label>
         <input type="number" value={this.state.itemCost} id="itemCost" onChange={this.updateInput} />
-
+<br/>
           <label>Retail Price</label>
           <input type="number"  value={this.state.retailInput} id="retailInput" onChange={this.updateInput} />
-
+<br/>
 
         <label>Quantity in Stock</label>
         <input type="number" value={this.state.quantity} id="quantity" onChange={this.updateInput} />
-          <button>Save</button>
+<br/>
+        <button class="btn btn-primary">
+          Save changes
+          </button>
+          
         </form>
       </div>;
   }

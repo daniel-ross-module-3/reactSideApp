@@ -32,11 +32,12 @@ class NavbarComponent extends Component{
       return <div>
           <div className="navbar-div">
             <Navbar>
-              <p>Logo</p> <Link to="/">
+              <p>Logo</p>
+               <Link to="/">
                 <Button bsStyle="warning">Home Page</Button>
               </Link> <br />
               {/* <Link to="/itemList">View item list</Link> */}
-              <Link to="/user/login" onClick={this.props.logUserOut}>
+              <Link to="/" onClick={this.props.logUserOut}>
                 {" "}
                 <Button bsStyle="warning">Logout</Button>{" "}
               </Link>
