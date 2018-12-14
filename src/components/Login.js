@@ -24,14 +24,14 @@ class Login extends Component {
         password: '',
       })
       this.props.logTheUserIntoAppComponent(userFromDb);
-        this.props.history.push('/userHomePage');
+        this.props.history.push('/');
         // console.log(this.state.username, this.state.password);        
 
 
       })
       .catch((err) => {
         this.setState({
-          err: "swaggy error will go here",
+          err: "Not Authorized",
         })
         console.log('sorry something went wrong', err);
       })
@@ -62,7 +62,7 @@ class Login extends Component {
           <input type='text' name='password' placeholder="put in your password" value={this.state.password} onChange={e => this.changeTheInputText(e)} /><br />
           <input type="submit" value="login" />
         </form>
-        {this.state.err}
+        <div className="errorStyle">{this.state.err}</div>
       </div>
     )
   }

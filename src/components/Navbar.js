@@ -10,10 +10,11 @@ class NavbarComponent extends Component{
 
     if(!this.props.loggedIn){
 
-      return <div>
+      return <div className="nav-bar-nav-bar">
+        <img src='/LogoMakr_8jVCA6.png' className="app-logo @keyframes App-logo-spin"/>
           <div className="navbar-div">
             <Navbar className="nav-link-container">
-              <p>Logo</p>
+              <div className="link-holder">
               <Link to="/">
                 {" "}
                 <Button bsStyle="warning"> Home Page</Button>{" "}
@@ -24,18 +25,23 @@ class NavbarComponent extends Component{
               <Link to="/user/signup">
               <Button bsStyle="warning">Sign Up</Button>
               </Link>
+              </div>
             </Navbar>
+            
           </div>
+          
         </div>;
         
     } else {
       return <div>
           <div className="navbar-div">
             <Navbar>
-              <p>Logo</p> <Link to="/">
+              <p>Logo</p> 
+              <div>Signed in as: {this.props.userName.username}</div>
+              <Link to="/">
                 <Button bsStyle="warning">Home Page</Button>
               </Link> <br />
-              {/* <Link to="/itemList">View item list</Link> */}
+              
               <Link to="/user/login" onClick={this.props.logUserOut}>
                 {" "}
                 <Button bsStyle="warning">Logout</Button>{" "}

@@ -76,7 +76,8 @@ class App extends Component {
              
               <div className="paragraphAboutApp">
                
-                <h1>Welcome</h1>
+                <h1>IMA</h1>
+                <p>Your Inventory Management Assistant</p>
                 <p className="paragraphAboutAppText">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
@@ -86,10 +87,6 @@ class App extends Component {
           )
       
       
-    }else{
-      return(
-        <div>welcome, {this.state.loggedInUser}</div>
-      )
     }
   }
 
@@ -109,7 +106,7 @@ class App extends Component {
 
   render() {
     return <div className="App">
-        <NavbarComponent logUserOut={this.logout} loggedIn={this.state.loggedInUser} />
+        <NavbarComponent logUserOut={this.logout} loggedIn={this.state.loggedInUser} userName={this.state.loggedInUser}/>
         {this.showUser()}
 
         {/* -=-=-=-=-= ROUTES ROOM   =-=--=-=-=-=*/}
