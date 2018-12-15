@@ -52,16 +52,16 @@ class Login extends Component {
     // console.log(this.state.username);
     // console.log('this will be the password', this.state.password);
     return (
-      <div className="login-form-container">
+      <div className="login-form-container background-marble">
 
       <div className="login-form">
         <h2>Login</h2>
         <form onSubmit={this.formSubmit}>
           <div className="inputAndLabelHolder">
-          <label>Username</label>
+          <label>Username: </label>
           <input type='text' name='username' placeholder="put in your username" value={this.state.username} onChange={e => this.changeTheInputText(e)} /><br /></div>
           <div className="inputAndLabelHolder">
-          <label>Password</label>
+          <label>Password: </label>
           <input type='text' name='password' placeholder="put in your password" value={this.state.password} onChange={e => this.changeTheInputText(e)} /><br />
           </div>
           <input type="submit" value="login" />

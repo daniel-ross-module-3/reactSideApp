@@ -8,7 +8,7 @@ class NavbarComponent extends Component{
 
   showCorrectNavLinks = ()=>{
 
-    if(!this.props.loggedIn){
+    if(!this.props.user){
 
       return <div className="nav-bar-nav-bar">
         <img src='/LogoMakr_8jVCA6.png' className="app-logo @keyframes App-logo-spin"/>
@@ -16,8 +16,7 @@ class NavbarComponent extends Component{
             <Navbar className="nav-link-container">
               <div className="link-holder">
               <Link to="/">
-                {" "}
-                <Button bsStyle="warning"> Home</Button>{" "}
+               <Button bsStyle="warning"> Home</Button>
               </Link>
               <Link to="/user/login">
               <Button bsStyle="warning">Login</Button>
@@ -33,18 +32,20 @@ class NavbarComponent extends Component{
         </div>;
         
     } else {
-      return <div>
+      return (
+      <div className="nav-bar-nav-bar">
+        <img src='/LogoMakr_8jVCA6.png' className="app-logo @keyframes App-logo-spin"/>
           <div className="navbar-div">
-            <Navbar>
-            <img src='/LogoMakr_8jVCA6.png' className="app-logo @keyframes App-logo-spin"/> 
-              <div className="usernameNav">Signed in as: {" " + this.props.userName.username}</div>
+            
+         
+          <div className="link-holder-two">
+              <div className="usernameNav">Signed in as: {" " + this.props.user.username}</div>
               <Link to="/">
                 <Button bsStyle="warning">Home</Button>
               </Link> <br />
               
               <Link to="/user/login" onClick={this.props.logUserOut}>
-                {" "}
-                <Button bsStyle="warning">Logout</Button>{" "}
+                <Button bsStyle="warning">Logout</Button>
               </Link>
               <br />
               <Link to="/itemList">
@@ -58,9 +59,12 @@ class NavbarComponent extends Component{
               <Link to="/findingEmployee">
               <Button bsStyle="warning">Dashboard</Button>
               </Link>
-            </Navbar>
-          </div>
-        </div>;
+            </div>
+              </div>
+              </div>
+       
+          
+        )
     }
   }
 
