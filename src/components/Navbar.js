@@ -39,14 +39,10 @@ class NavbarComponent extends Component{
             
          
           <div className="link-holder-two">
-              <div className="usernameNav">Signed in as: {" " + this.props.user.username}</div>
               <Link to="/">
                 <Button bsStyle="warning">Home</Button>
               </Link> <br />
               
-              <Link to="/user/login" onClick={this.props.logUserOut}>
-                <Button bsStyle="warning">Logout</Button>
-              </Link>
               <br />
               <Link to="/itemList">
                 <Button bsStyle="warning">Inventory</Button>
@@ -59,7 +55,11 @@ class NavbarComponent extends Component{
               <Link to="/findingEmployee">
               <Button bsStyle="warning">Dashboard</Button>
               </Link>
+              <Link to="/" onClick={this.props.logUserOut}>
+                <Button bsStyle="warning">Logout</Button>
+              </Link>
             </div>
+              <div className="usernameNav">Signed in as: {" " + this.props.user.username}</div>
               </div>
               </div>
        

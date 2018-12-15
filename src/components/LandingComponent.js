@@ -22,6 +22,8 @@ class Landing extends Component {
    if(!this.state.loading){
 
      return <div className="background-marble">
+          <div className="clickOnLogo">
+          <img className="indicateClick" src='/finger_hand_pointing_down_fingers-512.png' />
          <div class="logo reveal" id="startlab" onClick={this.changeLoading}>
            <div class="circle turq" />
            <div class="circle orange" />
@@ -29,6 +31,8 @@ class Landing extends Component {
            <div class="circle navy" />
            <div class="circle grey" />
            <img src="/LogoMakr_6OQZ68.png" class="imgSize" />
+           </div>
+           <h4>Learn More</h4>
          </div>
        </div>;
     }
@@ -36,6 +40,9 @@ class Landing extends Component {
       
      return (
      <div className="background-marble">
+     
+     <div className="clickOnLogo">
+     <img className="indicateClick" src='/finger_hand_pointing_down_fingers-512.png' />
      <div class="logo reveal" id="startlab" onClick={this.changeLoading}>
          <div class=" turq" />
          <div class=" orange" />
@@ -43,7 +50,9 @@ class Landing extends Component {
          <div class=" navy" />
          <div class=" grey" />
          <div class="image" />
-       </div>;
+       </div>
+       <h4>Learn More</h4>
+       </div>
        </div>)
     }
   } 

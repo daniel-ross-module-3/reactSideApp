@@ -104,9 +104,9 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 14vh;
-  border: 2px solid black;
-  background-color: white;
+  height: 17vh;
+  border: 2px solid #CCA43B;
+  background-color: #63768D;
 }
 .paragraphAboutApp h1{
   text-decoration: underline;
@@ -114,9 +114,9 @@
 .login-form{
   display: flex;
   flex-direction: column;
-  width: 50vw;
+  width: 30vw;
   align-content: center;
-  border: 1px solid #0FA3B1;
+  border: 4px solid #0FA3B1;
   margin-top: 8vh;
   background-color: white;
   height: 50vh;
@@ -135,20 +135,103 @@
   margin-bottom: 5vh;
 }
 .usernameNav{
-  width: 20vw;
+  margin-bottom: -3vh;
+  float: right;
+  margin-right: -44vw;
+  color: white;
+  font-weight: bolder;
 }
 .link-holder-two{
-  width: 80vw;
+  width: 40vw;
   display: flex;
   /* margin-left: 3vw; */
   justify-content: space-evenly;
 }
 .background-marble{
+  background-color: transparent;
   background-image: url('/marblebackground.jpg');
   height: 100vh;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-size: cover;
 }
 
 .inputAndLabelHolder label{
   margin-right: 3vw;
-  
+
+}
+.clickOnLogo h4{
+  margin-top: 40vh;
+}
+.clickOnLogo{
+  background-color: white;
+  position: fixed;
+  height: 69vh;
+  width: 34vw;
+  margin-top: 5vh;
+  border: 3px solid #0FA3B1;
+  border-radius: 20px;
+}
+.indicateClick {
+  margin-top: 20px;
+  width: 80px;
+  height: 80px;
+  position: static;
+  animation: bounce 1s infinite alternate;
+  -webkit-animation: bounce 1s infinite alternate;
+}
+@keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-15px);
+  }
+}
+@-webkit-keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-15px);
+  }
+}
+.employee-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2vw;
+  height: 28vh;
+}
+.employee-form form{
+  width: 23vw;
+  width: 23vw;
+  border: 2px solid;
+  border-radius: 20px;
+}
+.employee-form button{
+  margin: 1vh;
+}
+.employeeFormContainer{
+  display: flex;
+  justify-content: center;
+}
+.employeeFormContainer form{
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5vh;
+  align-items: center;
+}
+.employeeColumns{
+  height: 65vh;
+  padding: 25px;
+  border: 3px solid #0FA3B1;
+  border-radius: 30px;
+}
+.employeeFormContainer button{
+  width: 9vw;
+  margin-top: 4vh;
 }
