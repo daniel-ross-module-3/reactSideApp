@@ -11,7 +11,14 @@ class AddNewEmployee extends Component {
     payRate: 0,
     position: "",
     // quantity: 0
+    showform: true
 
+  }
+
+  addEmployeeButton = ()=>{
+    return(
+      <button className="bg-success" onClick={this.setState({showform: true})}>Add Employee</button>
+    )
   }
 
   updateInput = (e) => {
@@ -45,31 +52,45 @@ class AddNewEmployee extends Component {
       });
   }
 
+  addEmployeeForm = ()=>{
+    if(this.state.showform === true){
+    return(
+<div>
+<div className="employeeFormContainer">
+<div className="employeeColumns">
+<h2>Add Employee</h2>
+<form onSubmit={this.createNewEmployee}>
+  <label>Employee Name</label>
+  <input type="text" value={this.state.employeeName} id="employeeName" onChange={this.updateInput} />
+
+  <label>Employee Key</label>
+  <input type="text" value={this.state.employeeKey} id="employeeKey" onChange={this.updateInput} />
+
+
+  <label>payRate</label>
+  <input type="number" value={this.state.payRate} id="payRate" onChange={this.updateInput} />
+
+  <label>Employee Position</label>
+  <input type="text" value={this.state.position} id="position" onChange={this.updateInput} />
+
+
+  {/* <label>Quantity in Stock</label>
+  <input type="number" value={this.state.quantity} id="quantity" onChange={this.updateInput} /> */}
+  <button className="bg-primary btn">Save</button>
+</form>
+</div>
+</div>
+</div>
+    )
+  }
+  }
 
   render() {
     // console.log("================", this.state)
-    return <div>
-      <h2>Add New Employee</h2>
-      <form onSubmit={this.createNewEmployee}>
-        <label>Employee Name</label>
-        <input type="text" value={this.state.employeeName} id="employeeName" onChange={this.updateInput} />
-
-        <label>Employee Key</label>
-        <input type="text" value={this.state.employeeKey} id="employeeKey" onChange={this.updateInput} />
-
-
-        <label>payRate</label>
-        <input type="number" value={this.state.payRate} id="payRate" onChange={this.updateInput} />
-
-        <label>Employee Position</label>
-        <input type="text" value={this.state.position} id="position" onChange={this.updateInput} />
-
-
-        {/* <label>Quantity in Stock</label>
-        <input type="number" value={this.state.quantity} id="quantity" onChange={this.updateInput} /> */}
-        <button>Save</button>
-      </form>
-    </div>;
+    return( <div>
+     {this.addEmployeeForm()}
+  
+    </div>)
   }
 
 

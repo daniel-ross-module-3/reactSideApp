@@ -21,7 +21,9 @@ class Landing extends Component {
  landingLogo=()=>{
    if(!this.state.loading){
 
-     return <div>
+     return <div className="background-marble">
+          <div className="clickOnLogo">
+          <img className="indicateClick" src='/finger_hand_pointing_down_fingers-512.png' />
          <div class="logo reveal" id="startlab" onClick={this.changeLoading}>
            <div class="circle turq" />
            <div class="circle orange" />
@@ -29,23 +31,36 @@ class Landing extends Component {
            <div class="circle navy" />
            <div class="circle grey" />
            <img src="/LogoMakr_6OQZ68.png" class="imgSize" />
+           </div>
+           <h4>Learn More</h4>
          </div>
        </div>;
     }
     else{
       
-     return <div class="logo reveal" id="startlab" onClick={this.changeLoading}>
+     return (
+     <div className="background-marble">
+     
+     <div className="clickOnLogo">
+     <img className="indicateClick" src='/finger_hand_pointing_down_fingers-512.png' />
+     <div class="logo reveal" id="startlab" onClick={this.changeLoading}>
          <div class=" turq" />
          <div class=" orange" />
          <div class=" turqoise" />
          <div class=" navy" />
          <div class=" grey" />
          <div class="image" />
-       </div>;
+       </div>
+       <h4>Learn More</h4>
+       </div>
+       </div>)
     }
   } 
  render() {
-  return <div data-toggle="modal" data-target="#exampleModal">
+   
+  return(
+    <div className="background-marble">
+   <div data-toggle="modal" data-target="#exampleModal">
      {this.landingLogo()}
 
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -69,7 +84,9 @@ class Landing extends Component {
           </div>
         </div>
       </div>
-    </div>;
+    </div>
+    </div>)
+    ;
 }
 }
 

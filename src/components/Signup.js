@@ -8,7 +8,8 @@ class Signup extends Component {
   state = {
     username: '',
     password: '',
-    companyName: ''
+    companyName: '',
+    err: ''
   }
   service = new UserService();
 
@@ -16,20 +17,21 @@ class Signup extends Component {
     e.preventDefault();
 
     this.service.signup(this.state.username, this.state.password, this.state.companyName)
-      .then((userFromDB) => {
-        // console.log('------------------------', userFromDB);
-        this.props.logTheUserIntoAppComponent(userFromDB);
-        // here we wait for the API to give us the user object back after logging in
-        // then we pass that user object back to app component
-        this.setState({ username: '', password: '', companyName: '' });
-
-        // this.props.history.push('/user');
-
+    .then((userFromDB) => {
+      this.props.logTheUserIntoAppComponent(userFromDB);
+      // console.log('------------------------', userFromDB);
+      // here we wait for the API to give us the user object back after logging in
+      // then we pass that user object back to app component
+      this.setState({ username: '', password: '', companyName: '' });
+      
+      this.props.history.push('/');
+      console.log(this.props)
+      
 
       })
       .catch((err) => {
         console.log('sorry something went wrong', err);
-
+        this.setState({err: 'Try again'})
       })
   }
 
@@ -47,18 +49,26 @@ class Signup extends Component {
     // console.log(this.state.username);
     // console.log('this will be the password', this.state.password);
     return (
-
-      <div>
-        <h1>this is the signup component that will speak to the /signup route</h1>
+      <div className="login-form-container background-marble">
+      <div className="login-form">
+        <h1>Signup</h1>
         <form onSubmit={this.formSubmit}>
+        <div className="inputAndLabelHolder">
           <label>Username</label>
-          <input type='text' name='username' placeholder="put in your username" value={this.state.username} onChange={e => this.changeTheInputText(e)} /><br />
+          <input type='text' name='username' placeholder="put in your username" value={this.state.username} onChange={e => this.changeTheInputText(e)} />
+          </div>
+          <div className="inputAndLabelHolder">
           <label>Password</label>
-          <input type='text' name='password' placeholder="put in your password" value={this.state.password} onChange={e => this.changeTheInputText(e)} /><br />
+          <input type='text' name='password' placeholder="put in your password" value={this.state.password} onChange={e => this.changeTheInputText(e)} />
+          </div>
+          <div className="inputAndLabelHolder">
           <label>Company Name</label>
-          <input type='text' name='companyName' placeholder="Company Name" value={this.state.companyName} onChange={e => this.changeTheInputText(e)} /><br />
+          <input type='text' name='companyName' placeholder="Company Name" value={this.state.companyName} onChange={e => this.changeTheInputText(e)} />
+          </div>
           <button type="submit">formSubmit function</button>
         </form>
+        <div className="errorStyle">{this.state.err}</div>
+        </div>
       </div>
     )
   }

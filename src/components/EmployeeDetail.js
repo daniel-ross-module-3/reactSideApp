@@ -73,18 +73,19 @@ getTime=()=>{
   render() {
     console.log(this.state)
     return <div>
+        <div className="employee-form">
         <form onSubmit={this.submitForm}>
-          <label>Enter your Key</label>
-          <input id="employeeKey" value={this.state.employeeKey} onChange={this.updateForm} />
+          <label>Employee Code: </label><br/>
+          <input id="employeeKey" value={this.state.employeeKey} onChange={this.updateForm} /><br/>
 
-          <button>Submit</button>
+          <button>Submit</button><br/>
 
-          <button onClick={this.getTime}>Clock In</button>
-          <button onClick={this.getTime}>Clock Out</button>
+          <button onClick={this.getTime} className="bg-success">Clock In</button>
+          <button onClick={this.getTime} className="bg-danger">Clock Out</button>
 
           
         </form>
-
+        </div>
         <Table striped bordered condensed hover>
           <thead>
             <tr>
