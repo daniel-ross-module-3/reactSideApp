@@ -66,18 +66,24 @@ class Landing extends Component {
 
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
+          <div class="modal-content modal-content-container">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">
-               About Us
+               Inventory Management Assistant
               </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">We are a team of two people that created a react app</div>
+            <div className="modal-body modal-body-container">
+            <ul className="list">
+            	<li>Manage and update your inventory</li>
+            	<li>Keep track of labor costs with our staff ledger</li>
+            	<li>Track shifts with our clock in/clock out feature </li>
+            </ul>
+            </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              <button type="button" className="btn btn-secondary bg-danger" data-dismiss="modal">
                 Close
               </button>
               
