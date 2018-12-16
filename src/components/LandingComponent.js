@@ -30,7 +30,7 @@ class Landing extends Component {
            <div class="circle turqoise" />
            <div class="circle navy" />
            <div class="circle grey" />
-           <img src="/LogoMakr_6OQZ68.png" class="imgSize" />
+           <img src="/LogoMakr_6OQZ68.png" class="imgSize margin-right-logo" />
            </div>
            <h4>Learn More</h4>
            <i>click the icon</i>
