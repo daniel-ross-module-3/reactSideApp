@@ -70,7 +70,7 @@
 }
 .errorStyle{
   font-weight: bolder;
-  color: red;
+  color: white;
   padding: 7px;
 }
 .applicationInfoDiv{
@@ -114,14 +114,30 @@
 .login-form{
   display: flex;
   flex-direction: column;
-  width: 30vw;
+  width: 32vw;
   align-content: center;
   border: 4px solid #0FA3B1;
-  margin-top: 8vh;
-  background-color: white;
-  height: 50vh;
-  justify-content: center;
+  margin-top: 5vh;
+  background-color: rgba(0, 0, 0, .6);
+  height: 57vh;
+  color: white;
+  justify-content: space-evenly;
   border-radius: 50px;
+  position: fixed;
+}
+.login-form-two{
+  display: flex;
+  flex-direction: column;
+  width: 32vw;
+  align-content: center;
+  border: 4px solid #0FA3B1;
+  margin-top: 5vh;
+  background-color: rgba(0, 0, 0, .6);
+  height: 50vh;
+  color: white;
+  justify-content: space-evenly;
+  border-radius: 50px;
+  position: fixed;
 }
 .login-form-container{
   display: flex;
@@ -166,7 +182,7 @@
   margin-top: 40vh;
 }
 .clickOnLogo{
-  background-color: white;
+  background-color: rgba(0,0,0,0);
   position: fixed;
   height: 69vh;
   width: 34vw;
@@ -234,4 +250,14 @@
 .employeeFormContainer button{
   width: 9vw;
   margin-top: 4vh;
+}
+.setBtnBg{
+  background-color: #0FA3B1;
+  color: white;
+}
+.input-style{
+  width: 26vw;
+  height: 6vh;
+  border: 1px solid black;
+  text-align: center;
 }

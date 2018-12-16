@@ -54,17 +54,17 @@ class Login extends Component {
     return (
       <div className="login-form-container background-marble">
 
-      <div className="login-form">
+      <div className="login-form-two">
         <h2>Login</h2>
         <form onSubmit={this.formSubmit}>
           <div className="inputAndLabelHolder">
-          <label>Username: </label>
-          <input type='text' name='username' placeholder="put in your username" value={this.state.username} onChange={e => this.changeTheInputText(e)} /><br /></div>
+          
+          <input className="input-style" type='text' name='username' placeholder="Username e.g. IronhackFTWD" value={this.state.username} onChange={e => this.changeTheInputText(e)} /><br /></div>
           <div className="inputAndLabelHolder">
-          <label>Password: </label>
-          <input type='text' name='password' placeholder="put in your password" value={this.state.password} onChange={e => this.changeTheInputText(e)} /><br />
+          
+          <input className="input-style" type='text' name='password' placeholder="Input Password" value={this.state.password} onChange={e => this.changeTheInputText(e)} /><br />
           </div>
-          <input type="submit" value="login" />
+          <input type="submit" value="login" className="setBtnBg btn"/>
         </form>
         <div className="errorStyle">{this.state.err}</div>
       </div>

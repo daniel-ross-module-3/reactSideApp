@@ -33,6 +33,7 @@ class Landing extends Component {
            <img src="/LogoMakr_6OQZ68.png" class="imgSize" />
            </div>
            <h4>Learn More</h4>
+           <i>click the icon</i>
          </div>
        </div>;
     }
