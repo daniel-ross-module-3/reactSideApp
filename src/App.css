@@ -35,10 +35,12 @@
 
 
  .app-logo{
-  width: 100px;
+  width: 12vw;
   text-align: center;
-  background-color: white;
-  margin-left: 2vw;
+  background-color: black;
+  color: white;
+  margin: 2vw 4vw 2vw 2vw;
+  font-weight: bold;
 }
 
 @keyframes App-logo-spin {
@@ -78,9 +80,6 @@
   flex-direction: row;
   justify-content: center;
   align-content: center;
-  /* height: 80vh; */
-  /* margin-top: 5vh; */
-  /* padding: 5vw; */
   background-color: white;
 }
 .paragraphAboutApp{
@@ -95,18 +94,17 @@
 }
 
 .link-holder{
-  width: 25vw;
+  width: 20vw;
   display: flex;
-  margin-left: 3vw;
-  justify-content: space-between;
+  justify-content: center;
 }
 .nav-bar-nav-bar{
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 17vh;
-  border: 2px solid #CCA43B;
-  background-color: #63768D;
+  height: 14vh;
+  border: 2px solid white;
+  background-color: black;
 }
 .paragraphAboutApp h1{
   text-decoration: underline;
@@ -179,24 +177,26 @@
 
 }
 .clickOnLogo h4{
-  margin-top: 40vh;
+  margin-top: 39vh;
 }
 .clickOnLogo{
+    
   background-color: rgba(0,0,0,0);
   position: fixed;
-  height: 69vh;
+  height: 67vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 34vw;
+  width: 24vw;
   margin-top: 5vh;
-  border: 3px solid #0FA3B1;
+  border: 3px solid black;
   border-radius: 20px;
+  padding: 2vw;
 }
 .indicateClick {
   margin-top: 20px;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   position: static;
   animation: bounce 1s infinite alternate;
   -webkit-animation: bounce 1s infinite alternate;
@@ -321,5 +321,9 @@
   outline: 0;
 }
 .margin-right-logo{
-  left: 17% !important;
+  left: 22% !important;
+}
+.button-nav{
+  margin-right: 2vw;
+  width: 7vw;
 }
