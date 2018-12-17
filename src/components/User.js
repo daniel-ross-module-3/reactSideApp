@@ -12,8 +12,7 @@ class User extends Component{
       
         <h4>Welcome, {this.props.currentUser}</h4>
     
-      {/* {this.props.showUser} */}
-      <div>yooyoyoyo</div>
+     
       </div>
     )
   }

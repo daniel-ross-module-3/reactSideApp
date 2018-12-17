@@ -11,18 +11,19 @@ class NavbarComponent extends Component{
     if(!this.props.user){
 
       return <div className="nav-bar-nav-bar">
-        <img src='/LogoMakr_8jVCA6.png' className="app-logo @keyframes App-logo-spin"/>
+        {/* <img src='/final_nav-bar_logo.png' className="app-logo @keyframes App-logo-spin"/> */}
+      <p className="app-logo">Inventory Management Assistant</p>
           <div className="navbar-div">
             <Navbar className="nav-link-container">
               <div className="link-holder">
               <Link to="/">
-               <Button bsStyle="warning"> Home</Button>
+               <Button bsStyle="warning" className="button-nav"> Home</Button>
               </Link>
               <Link to="/user/login">
-              <Button bsStyle="warning">Login</Button>
+              <Button bsStyle="warning" className="button-nav">Login</Button>
               </Link>
               <Link to="/user/signup">
-              <Button bsStyle="warning">Signup</Button>
+              <Button bsStyle="warning" className="button-nav">Signup</Button>
               </Link>
               </div>
             </Navbar>
@@ -34,7 +35,7 @@ class NavbarComponent extends Component{
     } else {
       return (
       <div className="nav-bar-nav-bar">
-        <img src='/LogoMakr_8jVCA6.png' className="app-logo @keyframes App-logo-spin"/>
+        <img src='/final_nav-bar_logo.png' className="app-logo @keyframes App-logo-spin"/>
           <div className="navbar-div">
             
          

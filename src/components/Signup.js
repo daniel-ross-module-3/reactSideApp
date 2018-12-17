@@ -42,6 +42,31 @@ class Signup extends Component {
     })
   }
 
+  showSignupForm = ()=>{
+    return(
+    <div className="login-form-container background-marble">
+    <div className="login-form">
+      <h1>Signup</h1>
+      <form onSubmit={this.formSubmit}>
+      <div className="inputAndLabelHolder">
+        
+        <input className="input-style" type='text' name='username' placeholder="Organization Username" value={this.state.username} onChange={e => this.changeTheInputText(e)} />
+        </div>
+        <div className="inputAndLabelHolder">
+        
+        <input className="input-style" type='text' name='password' placeholder="Password" value={this.state.password} onChange={e => this.changeTheInputText(e)} />
+        </div>
+        <div className="inputAndLabelHolder">
+        
+        <input className="input-style" type='text' name='companyName' placeholder="Name of Your Organization" value={this.state.companyName} onChange={e => this.changeTheInputText(e)} />
+        </div>
+        <button type="submit" className="btn setBtnBg">Get Started</button>
+      </form>
+      <div className="errorStyle">{this.state.err}</div>
+      </div>
+    </div>)
+  }
+
 
 
 
@@ -49,26 +74,8 @@ class Signup extends Component {
     // console.log(this.state.username);
     // console.log('this will be the password', this.state.password);
     return (
-      <div className="login-form-container background-marble">
-      <div className="login-form">
-        <h1>Signup</h1>
-        <form onSubmit={this.formSubmit}>
-        <div className="inputAndLabelHolder">
-          <label>Username</label>
-          <input type='text' name='username' placeholder="put in your username" value={this.state.username} onChange={e => this.changeTheInputText(e)} />
-          </div>
-          <div className="inputAndLabelHolder">
-          <label>Password</label>
-          <input type='text' name='password' placeholder="put in your password" value={this.state.password} onChange={e => this.changeTheInputText(e)} />
-          </div>
-          <div className="inputAndLabelHolder">
-          <label>Company Name</label>
-          <input type='text' name='companyName' placeholder="Company Name" value={this.state.companyName} onChange={e => this.changeTheInputText(e)} />
-          </div>
-          <button type="submit">formSubmit function</button>
-        </form>
-        <div className="errorStyle">{this.state.err}</div>
-        </div>
+      <div>
+        {this.showSignupForm()}
       </div>
     )
   }
