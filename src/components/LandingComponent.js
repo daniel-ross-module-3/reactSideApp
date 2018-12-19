@@ -28,7 +28,7 @@ class Landing extends Component {
            <div class="circle turqoise" />
            <div class="circle navy" />
            <div class="circle grey" />
-           <img src="/LogoMakr_6OQZ68.png" class="imgSize" />
+         <img src="/LogoMakr_6OQZ68.png" class="imgSize" data-toggle="modal" data-target="#exampleModal"/>
          </div>
        </div>;
     }
@@ -45,7 +45,7 @@ class Landing extends Component {
     }
   } 
  render() {
-  return <div data-toggle="modal" data-target="#exampleModal">
+  return <div >
      {this.landingLogo()}
 
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
