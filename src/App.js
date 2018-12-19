@@ -106,6 +106,8 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={props => <LandingPage {...props} currentUser={this.state.loggedInUser} />} />
 
+          {/* <Route path="" */}
+
           <Route path="/itemList" render={props => <ItemIndex {...props} currentUser={this.state.loggedInUser} />} />
 
           <Route path="/employeeList" render={props => <EmployeeList {...props} currentUser={this.state.loggedInUser} />} />

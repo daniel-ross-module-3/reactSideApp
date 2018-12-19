@@ -16,11 +16,23 @@ updateForm=(e)=>{
   })
 }
 
+  // fetchEmployee = () =>{
+  //   Axios.get("http://localhost:5000/api/employeeFind/" + this.state.theEmployee.employeeKey, { withCredentials: true })
+  //     .then((employee) => {
+  //       this.setState({
+  //         theEmployee: employee.data
+  //       })
+
+  //     })
+  //     .catch(() => {
+  //     })
+  // }
+
+
 submitForm =(e) =>{
   e.preventDefault();
   Axios.get("http://localhost:5000/api/employeeFind/"+this.state.employeeKey, {withCredentials:true})
   .then((employee)=>{
-
     this.setState({
       theEmployee: employee.data
     })
@@ -32,8 +44,8 @@ submitForm =(e) =>{
   ;
 }
   deleteEmployee = () => {
-    console.log("hello")
-    console.log(this.state.theEmployee.employeeKey)
+    // console.log("hello")
+    // console.log(this.state.theEmployee.employeeKey)
     Axios.post("http://localhost:5000/api/employeeFind/delete/" + this.state.theEmployee.employeeKey, { withCredentials: true})
       .then(() => {
         this.props.history.push("/employeeList");
@@ -54,10 +66,47 @@ showEmployeeDetails=()=>{
             <Button bsStyle="danger" onClick={this.deleteEmployee}>Delete This Employee</Button>
         </td>
            </tr>
+           
       )
 }
 }
+showEmployeeShifts=()=>{
+  const singleEmployee = this.state.theEmployee;
+  if(singleEmployee){
+    // console.log(singleEmployee)
+    const showShifts = singleEmployee.shifts.map((eachShift,i)=>{
+      // console.log("==-12-=31-=23=-12=3-12=-312=-312",eachShift)
+      return(
+        <ul key={i}>
+
+        <li className="blue">
+          Clock In : {eachShift.clockIn}
+        </li>
+
+        <li className="red">
+          Clock Out : {eachShift.clockOut}
+        </li>
+        </ul>
+      )
+    
+    })
+    return showShifts
+    
+  }
+  // singleEmployee.map((Emp)=>{
+    
+  //     return (<div>
+  //       <div>
+  //         <h1>{Emp}</h1>
+  //       </div>
+  //     </div>
+  //      )})
+    }
+
+
 getTime=()=>{
+
+
   var currentdate = new Date();
   var datetime = + currentdate.getDate() + "/"
     + (currentdate.getMonth() + 1) + "/"
@@ -65,13 +114,49 @@ getTime=()=>{
     + currentdate.getHours() + ":"
     + currentdate.getMinutes() + ":"
     + currentdate.getSeconds();
-  console.log(datetime)
+    console.log("-=-=-=-==-00000000000=--==-=-=--=",this.state.theEmployee._id);
+    
+    Axios.post("http://localhost:5000/api/clockInAndOut/" + this.state.theEmployee._id, { withCredentials: true })
+  .then((theUpdatedEmployee)=>{
+
+    // console.log(theUpdatedEmployee);
+
+    this.setState({
+      theEmployee:theUpdatedEmployee.data
+    }, ()=>{
+      this.render()
+      // this is supposed to happen automatically, time to aska question on stack overflow
+      // console.log('~~~~~~~~~~~~~~~~~~~~~~',this.state)
+    })
+ 
+  }).catch(()=>{
+    
+  });
+}
+showButton =()=>{
+  if(!this.state.theEmployee){
+    return(<div></div>)
+  }
+  
+    // console.log("=======================", this.state)
+
+  if (this.state.theEmployee && this.state.theEmployee.active){
+      console.log("THE EMPLOYEE IS  CLOCKED IN SO WERE SHOWING THE CLOCK OUT BUTTON")
+      return (
+        <button onClick={this.getTime}>Clock Out</button>
+        
+        )
+      }else{
+        console.log("EMPLYOYEE NOT CLOCKED IN SP WE SHOW CLOCK IN BUTTON")
+        return(
+          <button onClick={this.getTime}>Clock In</button>
+          )
+        }
+      
 }
  
-
-
   render() {
-    console.log(this.state)
+    // console.log("###########################", this.state)
     return <div>
         <div className="employee-form">
         <form onSubmit={this.submitForm}>
@@ -80,9 +165,11 @@ getTime=()=>{
 
           <button>Submit</button><br/>
 
-          <button onClick={this.getTime} className="bg-success">Clock In</button>
-          <button onClick={this.getTime} className="bg-danger">Clock Out</button>
+          {this.showButton()}
 
+
+          {/* <button onClick={this.getTime} className="bg-success">Clock In</button>
+          <button onClick={this.getTime} className="bg-danger">Clock Out</button> */}
           
         </form>
         </div>
@@ -99,6 +186,9 @@ getTime=()=>{
           </thead>
           <tbody>{this.showEmployeeDetails()}</tbody>
         </Table>
+        <div className="clock">
+        {this.showEmployeeShifts()}
+        </div>
       </div>;
   }
   

@@ -327,3 +327,16 @@
   margin-right: 2vw;
   width: 7vw;
 }
+
+.clock{
+  display: flex;
+  border: 2px solid purple;
+  justify-content: center;
+  align-content: center;
+}
+.red{
+  color: red;
+}
+.blue{
+  color: blue;
+}
