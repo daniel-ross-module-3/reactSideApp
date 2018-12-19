@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import NavbarComponent from "./components/Navbar";
 import ItemIndex from "./components/itemIndex";
 import itemDetails from "./components/itemDetails";
@@ -12,18 +11,15 @@ import User from "./components/User";
 import EmployeeList from "./components/EmployeeList";
 import FindEmployee from "./components/EmployeeDetail";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStroopwafel } from "@fortawesome/free-solid-svg-icons";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
-
-
 import LandingPage from "./components/LandingPage"
 
+// add font awesome icons
 library.add(faStroopwafel);
 library.add(faPen);
 
-
-
+// App component
 class App extends Component {
   state = {
     loggedInUser: null,
@@ -31,77 +27,33 @@ class App extends Component {
 
   service = new UserService();
 
-
+  // User methods to login/signup
   componentDidMount(props){
     this.fetchUser();
   }
 
-
   fetchUser(){
     if( this.state.loggedInUser === null ){
       this.service.loggedin()
-      .then(theActualUserFromDB =>{
-        this.setState({
-          loggedInUser:  theActualUserFromDB
-        }) 
+      .then(theActualUserFromDB =>{this.setState({loggedInUser:  theActualUserFromDB})})
 
-      })
-      .catch( err =>{
-        console.log('catch getting hit', err)
-        this.setState({
-          loggedInUser:  false
-        }) 
-      })
-    }
-  }
+      .catch( err =>{this.setState({loggedInUser:  false}) })
+    }}
 
   logInTheUser = (userToLogIn) => {
-    console.log('=--=-=-=-=-=',userToLogIn)
     if(!userToLogIn){
-  this.setState({loggedInUser: null})
-}
-
-
-      this.setState({loggedInUser: userToLogIn })
-    // console.log('this is after',this.state.loggedInUser)
-
-  }
-
-  showUser = () =>{
-    if(this.state.loggedInUser){
-      // console.log('you are logged in', this.state.loggedInUser)
-
-      return(
-        <div>
-
-        <h4>Welcome, {this.state.loggedInUser.username}</h4>
-        </div>
-        )
-    }else{
-          return(
-            <div className="applicationInfoDiv">
-            
-            </div>
-
-          )
-      
-      
-    }
-  }
+      this.setState({loggedInUser: null})}
+      this.setState({loggedInUser: userToLogIn })}
 
   logout = () =>{
     this.service.logout().then(()=>{
-      this.setState({loggedInUser: null});
-      console.log('you triggered the logout function', this.state.loggedInUser);
-    })
-  }
+      this.setState({loggedInUser: null})})}
 
   render() {
 
     return(
-    <div className="App">
+      <div className="App">
         <NavbarComponent logUserOut={this.logout} loggedIn={this.logInTheUser} user={this.state.loggedInUser} />
-        {/* {this.showUser()} */}
 
         <Switch>
           <Route exact path="/" render={props => <LandingPage {...props} currentUser={this.state.loggedInUser} />} />
@@ -114,16 +66,14 @@ class App extends Component {
 
           <Route path="/items/details/:id" component={itemDetails} />
           
-        <Route path="/userHomePage" render={props => <User {...props} currentUser= {this.state.loggedInUser}/> } />
+          <Route path="/userHomePage" render={props => <User {...props} currentUser= {this.state.loggedInUser}/> } />
 
           <Route path="/user/login" render={props => <Login {...props} logTheUserIntoAppComponent={this.logInTheUser} />} />
 
           <Route path="/user/signup" render={props => <Signup {...props} logTheUserIntoAppComponent={this.logInTheUser} />} />
           
-          </Switch>
-     </div>
-        
-    )
+        </Switch>
+     </div>)
   }
 }
     
