@@ -159,19 +159,18 @@ showButton =()=>{
     // console.log("###########################", this.state)
     return <div>
         <div className="employee-form">
-        <form onSubmit={this.submitForm}>
-          <label>Employee Code: </label><br/>
-          <input id="employeeKey" value={this.state.employeeKey} onChange={this.updateForm} /><br/>
+          <form onSubmit={this.submitForm}>
+            <label>Employee Code: </label>
+            <br />
+            <input id="employeeKey" value={this.state.employeeKey} onChange={this.updateForm} />
+            <br />
 
-          <button>Submit</button><br/>
+            <button>Submit</button>
+            <br />
 
-          {this.showButton()}
-
-
-          {/* <button onClick={this.getTime} className="bg-success">Clock In</button>
-          <button onClick={this.getTime} className="bg-danger">Clock Out</button> */}
+          </form>
           
-        </form>
+          {this.showButton()}
         </div>
         <Table striped bordered condensed hover>
           <thead>
@@ -181,14 +180,11 @@ showButton =()=>{
               <th>Employee Pay Rate</th>
               <th>Position</th>
               <th>Delete an Employee Info</th>
-
             </tr>
           </thead>
           <tbody>{this.showEmployeeDetails()}</tbody>
         </Table>
-        <div className="clock">
-        {this.showEmployeeShifts()}
-        </div>
+        <div className="clock">{this.showEmployeeShifts()}</div>
       </div>;
   }
   
