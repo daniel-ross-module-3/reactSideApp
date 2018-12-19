@@ -8,7 +8,8 @@ class Signup extends Component {
   state = {
     username: '',
     password: '',
-    companyName: ''
+    companyName: '',
+    err: ''
   }
   service = new UserService();
 
@@ -16,20 +17,21 @@ class Signup extends Component {
     e.preventDefault();
 
     this.service.signup(this.state.username, this.state.password, this.state.companyName)
-      .then((userFromDB) => {
-        // console.log('------------------------', userFromDB);
-        this.props.logTheUserIntoAppComponent(userFromDB);
-        // here we wait for the API to give us the user object back after logging in
-        // then we pass that user object back to app component
-        this.setState({ username: '', password: '', companyName: '' });
-
-        // this.props.history.push('/user');
-
+    .then((userFromDB) => {
+      this.props.logTheUserIntoAppComponent(userFromDB);
+      // console.log('------------------------', userFromDB);
+      // here we wait for the API to give us the user object back after logging in
+      // then we pass that user object back to app component
+      this.setState({ username: '', password: '', companyName: '' });
+      
+      this.props.history.push('/');
+      console.log(this.props)
+      
 
       })
       .catch((err) => {
         console.log('sorry something went wrong', err);
-
+        this.setState({err: 'Try again'})
       })
   }
 
@@ -40,6 +42,31 @@ class Signup extends Component {
     })
   }
 
+  showSignupForm = ()=>{
+    return(
+    <div className="login-form-container background-marble">
+    <div className="login-form">
+      <h1>Signup</h1>
+      <form onSubmit={this.formSubmit}>
+      <div className="inputAndLabelHolder">
+        
+        <input className="input-style" type='text' name='username' placeholder="Organization Username" value={this.state.username} onChange={e => this.changeTheInputText(e)} />
+        </div>
+        <div className="inputAndLabelHolder">
+        
+        <input className="input-style" type='text' name='password' placeholder="Password" value={this.state.password} onChange={e => this.changeTheInputText(e)} />
+        </div>
+        <div className="inputAndLabelHolder">
+        
+        <input className="input-style" type='text' name='companyName' placeholder="Name of Your Organization" value={this.state.companyName} onChange={e => this.changeTheInputText(e)} />
+        </div>
+        <button type="submit" className="btn setBtnBg">Get Started</button>
+      </form>
+      <div className="errorStyle">{this.state.err}</div>
+      </div>
+    </div>)
+  }
+
 
 
 
@@ -47,18 +74,8 @@ class Signup extends Component {
     // console.log(this.state.username);
     // console.log('this will be the password', this.state.password);
     return (
-
       <div>
-        <h1>this is the signup component that will speak to the /signup route</h1>
-        <form onSubmit={this.formSubmit}>
-          <label>Username</label>
-          <input type='text' name='username' placeholder="put in your username" value={this.state.username} onChange={e => this.changeTheInputText(e)} /><br />
-          <label>Password</label>
-          <input type='text' name='password' placeholder="put in your password" value={this.state.password} onChange={e => this.changeTheInputText(e)} /><br />
-          <label>Company Name</label>
-          <input type='text' name='companyName' placeholder="Company Name" value={this.state.companyName} onChange={e => this.changeTheInputText(e)} /><br />
-          <button type="submit">formSubmit function</button>
-        </form>
+        {this.showSignupForm()}
       </div>
     )
   }

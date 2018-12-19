@@ -6,8 +6,8 @@ import Landing from "./LandingComponent";
 class LandingPage extends Component {
 render(){
   return(
-    <div>
-      <Landing />
+    <div className="background-marble">
+      <Landing className="background-marble"/>
     </div>
   )
 }
