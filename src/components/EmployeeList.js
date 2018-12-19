@@ -31,9 +31,9 @@ class EmployeeList extends Component {
     const allTheEmployees = this.state.allTheEmployees;
     // console.log(allTheEmployees)
 
-    return allTheEmployees.map(eachEmployee => {
+    return allTheEmployees.map((eachEmployee,i) => {
       // console.log(eachEmployee);
-      return <tr key={eachEmployee}>
+      return <tr key={i}>
           <td>{eachEmployee.employeeName}</td>
           <td>{eachEmployee.employeeKey}</td>
           <td>{eachEmployee.payRate}</td>

@@ -44,8 +44,8 @@ submitForm =(e) =>{
   ;
 }
   deleteEmployee = () => {
-    console.log("hello")
-    console.log(this.state.theEmployee.employeeKey)
+    // console.log("hello")
+    // console.log(this.state.theEmployee.employeeKey)
     Axios.post("http://localhost:5000/api/employeeFind/delete/" + this.state.theEmployee.employeeKey, { withCredentials: true})
       .then(() => {
         this.props.history.push("/employeeList");
@@ -79,11 +79,11 @@ showEmployeeShifts=()=>{
       return(
         <ul key={i}>
 
-        <li>
+        <li className="blue">
           Clock In : {eachShift.clockIn}
         </li>
 
-        <li>
+        <li className="red">
           Clock Out : {eachShift.clockOut}
         </li>
         </ul>
@@ -114,19 +114,19 @@ getTime=()=>{
     + currentdate.getHours() + ":"
     + currentdate.getMinutes() + ":"
     + currentdate.getSeconds();
-  // console.log("-=-=-=-==-=--==-=-=--=",this.state.theEmployee);
-
-  Axios.post("http://localhost:5000/api/clockInAndOut/" + this.state.theEmployee._id, { withCredentials: true })
+    console.log("-=-=-=-==-00000000000=--==-=-=--=",this.state.theEmployee._id);
+    
+    Axios.post("http://localhost:5000/api/clockInAndOut/" + this.state.theEmployee._id, { withCredentials: true })
   .then((theUpdatedEmployee)=>{
 
-    console.log(theUpdatedEmployee);
+    // console.log(theUpdatedEmployee);
 
     this.setState({
       theEmployee:theUpdatedEmployee.data
     }, ()=>{
       this.render()
       // this is supposed to happen automatically, time to aska question on stack overflow
-      console.log('~~~~~~~~~~~~~~~~~~~~~~',this.state)
+      // console.log('~~~~~~~~~~~~~~~~~~~~~~',this.state)
     })
  
   }).catch(()=>{
@@ -138,7 +138,7 @@ showButton =()=>{
     return(<div></div>)
   }
   
-    console.log("=======================", this.state)
+    // console.log("=======================", this.state)
 
   if (this.state.theEmployee && this.state.theEmployee.active){
       console.log("THE EMPLOYEE IS  CLOCKED IN SO WERE SHOWING THE CLOCK OUT BUTTON")
@@ -156,7 +156,7 @@ showButton =()=>{
 }
  
   render() {
-    console.log("###########################", this.state)
+    // console.log("###########################", this.state)
     return <div>
         <div className="employee-form">
         <form onSubmit={this.submitForm}>
@@ -165,9 +165,11 @@ showButton =()=>{
 
           <button>Submit</button><br/>
 
+          {this.showButton()}
 
-          <button onClick={this.getTime} className="bg-success">Clock In</button>
-          <button onClick={this.getTime} className="bg-danger">Clock Out</button>
+
+          {/* <button onClick={this.getTime} className="bg-success">Clock In</button>
+          <button onClick={this.getTime} className="bg-danger">Clock Out</button> */}
           
         </form>
         </div>
@@ -184,8 +186,8 @@ showButton =()=>{
           </thead>
           <tbody>{this.showEmployeeDetails()}</tbody>
         </Table>
-        <div>
-        <h1>{this.showEmployeeShifts()}</h1>
+        <div className="clock">
+        {this.showEmployeeShifts()}
         </div>
       </div>;
   }
