@@ -69,16 +69,18 @@ class ItemIndex extends Component {
           <td>{eachItem.description}</td>
           <td>{eachItem.itemCost}</td>
           <td>{eachItem.retailPrice}</td>
-          <td>
+          <td className="amount-in-stock">
             <Button bsStyle="warning" onClick={() => this.changeQuanity(-1, eachItem)}>
               -
             </Button>{eachItem.quantity}<Button bsStyle="warning" onClick={() => this.changeQuanity(1, eachItem)}>
               +
             </Button>
           </td>
+          <td>
           <Link to={`/items/details/${eachItem._id}`}>
             <Button bsStyle="info">Info</Button>
           </Link>
+          </td>
           {/* <button>
           <Link to={`/items/details/${eachItem._id}`}>Edit Item</Link>
         </button> */}
@@ -151,7 +153,7 @@ showNumbers=()=>{
               <th>Description</th>
               <th>Cost in U$</th>
               <th>Retail Price</th>
-              <th>Amount in Stock</th>
+              <th>In Stock</th>
               <th>See Details</th>
             </tr>
           </thead>
@@ -163,7 +165,7 @@ showNumbers=()=>{
               <th>--</th>
               <th>Full Inventory Cost</th>
               <th>Full Inventory Value</th>
-              <th>Full Inventory Amount of Units</th>
+              <th>Total Units</th>
               <th>--</th>
 
             </tr>

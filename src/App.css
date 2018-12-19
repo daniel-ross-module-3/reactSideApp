@@ -6,6 +6,17 @@
 .App {
   text-align: center;
 }
+.link-holder-two{
+  width: 61vw;
+  display: flex;
+  justify-content: flex-end;
+}
+.nav-home{
+  display: flex;
+  width: 76vw;
+  justify-content: flex-end;
+  align-items: center;
+}
 .logo {
   position: absolute;
   top: 50%;
@@ -17,12 +28,15 @@
           transform: translateX(-50%) translateY(-50%);
 }
 
-
+.amount-in-stock{
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
 .image {
   position: absolute;
   top: 50%;
   left: 50%;
-  /*background: url("../public/LogoMakr_6OQZ68.png"); */
   width: 50px;
   height: 50px;
   -webkit-transform: translateX(-50%) translateY(-50%);
@@ -31,8 +45,6 @@
           animation: fade-up-in 2500ms ease-in-out;
 }
 .imgSize{
-   /* position: absolute; */
-  /* top: 23%; */
   margin-top: 57px;
   margin-left: 1vw !important;
   height: 20vh;
@@ -537,6 +549,7 @@
 }
 
 .button-nav{
+  margin-right: 2vw;
   width: 7vw !important;
 } 
 }
@@ -751,7 +764,7 @@
   100% {
     opacity: 1;
   }
-} */
+} 
 /*
  * Misc
  */
@@ -1098,19 +1111,30 @@
     border-radius: 1.3rem;
     outline: 0;
   }
-  /* .margin-right-logo{
-    left: 5vw !important;
-  } */
+
   .button-nav{
     margin-right: 1vw;
-    width: 23vw;
+    width: 14vw;
     text-align: center;
     font-size: 12px;
   }
   .nav-home{
     display: flex;
     align-items: center;
-    /* height: 17vh; */
-    margin-left: 4vw;
+    margin-left: 24vw;
   }
+
+
+.clock{
+  display: flex;
+  border: 2px solid purple;
+  justify-content: center;
+  align-content: center;
+}
+.red{
+  color: red;
+}
+.blue{
+  color: blue;
+}
 }

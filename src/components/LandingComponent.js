@@ -5,6 +5,11 @@ class Landing extends Component {
 
   state={loading:false}
 
+  routeChange = (route)=>{
+    console.log(this.props)
+    this.props.history.push(route);
+  }
+
   changeLoading = () =>{
     this.setState({loading: !this.state.loading}, () => {
     this.setState({loading:!this.state.loading})})}
@@ -39,6 +44,7 @@ class Landing extends Component {
         <div className=" navy" />
         <div className=" grey" />
         <div className="image" style={{backgroundImage:'./LogoMakr_6OQZ68.png'}}/>
+
        </div>
        <h4>Learn More</h4>
        <i>click the icon</i>
@@ -62,9 +68,9 @@ class Landing extends Component {
             </div>
           <div className="modal-body modal-body-container">
             <ul className="list">
-            	<li>Manage and update your inventory</li>
-            	<li>Keep track of labor costs with our staff ledger</li>
-            	<li>Track shifts with our clock in/clock out feature </li>
+            	<li onClick={() => {this.routeChange('/itemList')}}>Manage and update your inventory</li>
+            	<li onClick={() => {this.routeChange('/employeeList')}}>Keep track of labor costs with our staff ledger</li>
+            	<li onClick={() => {this.routeChange('/findingEmployee')}}>Track shifts with our clock in/clock out feature </li>
             </ul>
           </div>
           <div className="modal-footer">
@@ -80,4 +86,4 @@ class Landing extends Component {
 }
 }
 
-export default Landing
+export default Landing;
