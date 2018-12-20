@@ -73,55 +73,27 @@ showEmployeeDetails=()=>{
 showEmployeeShifts=()=>{
   const singleEmployee = this.state.theEmployee;
   if(singleEmployee){
-    // console.log(singleEmployee)
     const showShifts = singleEmployee.shifts.map((eachShift,i)=>{
-      // console.log("==-12-=31-=23=-12=3-12=-312=-312",eachShift)
       return(
         <ul key={i}>
-
         <li className="blue">
           Clock In : {eachShift.clockIn}
         </li>
-
         <li className="red">
           Clock Out : {eachShift.clockOut}
         </li>
         </ul>
       )
-    
     })
     return showShifts
-    
   }
-  // singleEmployee.map((Emp)=>{
-    
-  //     return (<div>
-  //       <div>
-  //         <h1>{Emp}</h1>
-  //       </div>
-  //     </div>
-  //      )})
     }
 
-
 getTime=()=>{
-
-
-
-  // var currentdate = new Date();
-  // var datetime = + currentdate.getDate() + "/"
-  //   + (currentdate.getMonth() + 1) + "/"
-  //   + currentdate.getFullYear() + " @ "
-  //   + currentdate.getHours() + ":"
-  //   + currentdate.getMinutes() + ":"
-  //   + currentdate.getSeconds();
     console.log("-=-=-=-==-00000000000=--==-=-=--=",this.state.theEmployee);
-    
     Axios.post("http://localhost:5000/api/clockInAndOut/" + this.state.theEmployee._id, { withCredentials: true })
   .then((theUpdatedEmployee)=>{
-
     console.log(String(new Date()),'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~',theUpdatedEmployee);
-
     this.setState({
       theEmployee:theUpdatedEmployee.data
     })
