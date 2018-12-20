@@ -8,6 +8,13 @@ state={
   employee: ""
 }
 
+
+
+
+componentDidMount(){
+  this.getEmployeeShifts();
+}
+
 getEmployeeShifts=()=>{
   Axios.get(
     "http://localhost:5000/api/employeeFind/" + this.props.match.params.key,
@@ -21,7 +28,7 @@ getEmployeeShifts=()=>{
 }
 
   showEmployeeShifts = () => {
-    this.getEmployeeShifts()
+    
     const singleEmployee = this.state.theEmployee;
     // this.setState({
     //   employee:singleEmployee
@@ -31,11 +38,28 @@ getEmployeeShifts=()=>{
     if (singleEmployee) {
       // console.log(singleEmployee)
       const showShifts = singleEmployee.shifts.map((eachShift, i) => {
-        // console.log("==-12-=31-=23=-12=3-12=-312=-312",eachShift)
+
+        console.log(eachShift);
+
+
+
+        const seconds = (new Date(eachShift.clockOut).getTime() - new Date(eachShift.clockIn).getTime())/1000;
+
+        const hours = Math.floor(seconds/3600);
+        if(hours > 1){
+          seconds = seconds - hours * 3600;
+        }
+        const minutes = Math.floor(seconds/60);
+        if(minutes > 1){
+          seconds = seconds - minutes * 60;
+        }
+      
         
         return (
           <div>
+            <div>
           <h1>Hello {this.singleEmployee}</h1>
+          </div>
           <ul key={i}>
 
             <li className="blue">
@@ -46,10 +70,11 @@ getEmployeeShifts=()=>{
               Clock Out : {eachShift.clockOut}
             </li>
               <li className="red">
-                Total Hours : {Number(eachShift.clockOut-eachShift.clockIn)}
+                Total time : {hours}h {minutes}m {seconds}s
               </li>
 
           </ul>
+          
           </div>
         )
 
