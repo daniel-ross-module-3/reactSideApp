@@ -69,10 +69,13 @@ class ItemIndex extends Component {
           <td>{eachItem.description}</td>
           <td>{eachItem.itemCost}</td>
           <td>{eachItem.retailPrice}</td>
-          <td className="amount-in-stock">
-            <Button bsStyle="warning" onClick={() => this.changeQuanity(-1, eachItem)}>
-              -
-            </Button>{eachItem.quantity}<Button bsStyle="warning" onClick={() => this.changeQuanity(1, eachItem)}>
+
+          <td>
+          <Button className="square-btn-red" onClick={() => this.changeQuanity(-1, eachItem)}>
+
+            </Button>
+            {eachItem.quantity}
+            <Button className="square-btn-green" onClick={() => this.changeQuanity(1, eachItem)}>
               +
             </Button>
           </td>

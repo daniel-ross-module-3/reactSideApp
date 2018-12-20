@@ -33,13 +33,13 @@ class EmployeeList extends Component {
 
     return allTheEmployees.map((eachEmployee,i) => {
       // console.log(eachEmployee);
-      return <tr key={i}>
+      return <tr key={eachEmployee}>
           <td>{eachEmployee.employeeName}</td>
           <td>{eachEmployee.employeeKey}</td>
           <td>{eachEmployee.payRate}</td>
           <td>{eachEmployee.position}</td>
-          <Button bsStyle="info">
-          <Link to={`/employeeFind/${eachEmployee.employeeKey}`}>Check Employee Shifts</Link>
+          <Button className="btn btn-secondary">
+          <Link className="white" to={`/employeeFind/${eachEmployee.employeeKey}`}>Check Employee Shifts</Link>
           </Button>
         </tr>;
     });

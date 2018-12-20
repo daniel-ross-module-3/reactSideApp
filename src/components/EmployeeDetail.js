@@ -4,6 +4,7 @@ import Axios from "axios";
 import Table from "react-bootstrap/lib/Table";
 import { Button } from "react-bootstrap";
 
+
 class EmployeeDetail extends Component{
 state={
   employeeKey: ""
@@ -82,9 +83,9 @@ showEmployeeShifts=()=>{
         <li className="red">
           Clock Out : {eachShift.clockOut}
         </li>
-          <li className="red">
+          {/* <li className="red">
             diference : {Number(eachShift.clockOut - eachShift.clockIn)}
-          </li>
+          </li> */}
         </ul>
       )
     })
@@ -116,13 +117,19 @@ showButton =()=>{
   if (this.state.theEmployee.active){
       console.log("THE EMPLOYEE IS  CLOCKED IN SO WERE SHOWING THE CLOCK OUT BUTTON")
       return (
-        <button onClick={this.getTime}>Clock Out</button>
-        
+        <div className="buttonDiv">
+
+        <button className="btn-red" onClick={this.getTime}></button>
+        <p>Clock Out</p>
+        </div>
         )
       }else{
         console.log("EMPLYOYEE NOT CLOCKED IN SP WE SHOW CLOCK IN BUTTON")
-        return(
-          <button onClick={this.getTime}>Clock In</button>
+        return(<div className="buttonDiv">
+
+          <button className="btn-green" onClick={this.getTime}></button>
+          <p>Clock in</p>
+        </div>
           )
         }
       
