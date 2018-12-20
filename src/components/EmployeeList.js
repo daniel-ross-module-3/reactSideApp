@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "../App.css";
 import Axios from 'axios';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Table from "react-bootstrap/lib/Table";
 import { Button } from "react-bootstrap";
 import AddNewEmployee from './AddNewEmployee';

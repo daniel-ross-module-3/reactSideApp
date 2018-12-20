@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import "../App.css";
 import Axios from 'axios';
-import { Link } from 'react-router-dom';
-
 
 class AddNewEmployee extends Component {
   state = {
@@ -10,7 +8,6 @@ class AddNewEmployee extends Component {
     employeeKey: "",
     payRate: 0,
     position: "",
-    // quantity: 0
     showform: true
 
   }

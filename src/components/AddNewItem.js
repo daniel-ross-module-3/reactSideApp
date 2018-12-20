@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "../App.css";
 import Axios from 'axios';
+
 // import { Link } from 'react-router-dom';
 
 
@@ -73,7 +74,7 @@ class AddNewItem extends Component {
         <label>Quantity in Stock</label>
         <input type="number" value={this.state.quantity} id="quantity" onChange={this.updateInput} />
 <br/>
-        <button class="btn btn-primary">
+        <button className="btn btn-primary">
           Save changes
           </button>
           

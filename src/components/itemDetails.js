@@ -4,11 +4,7 @@ import Axios from 'axios';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-// export const Food = () => (
-//   <div>
-//     Favorite Food: <FontAwesomeIcon icon="stroopwafel" />
-//   </div>
-// );
+
 
 class itemDetail extends Component {
   state = {
@@ -75,35 +71,38 @@ class itemDetail extends Component {
     if (this.state.theActualItem) {
       if (this.state.editing) {
 
-        return <form onSubmit={this.editItem}>
-         
-
+        return (
+        <div>
+        <form onSubmit={this.editItem} className="itemDetailsForm">
             <input className="input" value={this.state.nameInput} onChange={this.updateInput} id="nameInput" />
             <input className="input" value={this.state.descInput} onChange={this.updateInput} id="descInput" />
             <button>submit changes</button>
-          </form>;
+          </form>
+          </div>
+          )
 
       } else {
 
         // console.log("=--=-==-=--=-=")
-        return <div>
-            <h3>
-              item Name:
-              {this.state.nameInput}
-            </h3>
-            <br />
-            <h3> item Description :{this.state.descInput}</h3>
-            <br />
-            <h3>item Cost :  ${this.state.itemCost}</h3>
-            <h3>item Retail price : ${this.state.retailPrice}</h3>
-            <h3>Amount in Stock : {this.state.quantity} units</h3>
+        return (
+        <div className="itemDetailsDiv background-marble">
+          <div className="itemDetailsCol">
+            <h1>Details</h1>
+            <h3>Product : {this.state.nameInput}</h3>
+            <h3>Description :{this.state.descInput}</h3>
+            <h3>Cost :  ${this.state.itemCost}</h3>
+            <h3>Retail price : ${this.state.retailPrice}</h3>
+            <h3>In Stock : {this.state.quantity} units</h3>
             {/* <div>
         <FontAwesomeIcon className="iconSize" icon="pencil-alt" />
-            </div> */}
-            <div>
-            <FontAwesomeIcon icon="pen" onClick={this.toggleForm} />
+      </div> */}
+      <div className="buttonAndPen">
+           <div> <FontAwesomeIcon icon="pen" onClick={this.toggleForm} className="colorPen"/> </div>
+          <button onClick={this.deleteItem} className="delete deleteButton bg-danger">Delete</button>
+          </div>
             </div>
-          </div>;
+            
+          </div>)
       }
     }
   }
@@ -124,14 +123,12 @@ class itemDetail extends Component {
 
 
   render() {
-    console.log(this.props)
-    console.log(this.state)
     return (
       <div>
         {this.showItemDetails()}
 
         <div>
-          <button onClick={this.deleteItem} className="delete">Delete This Item</button>
+         
         </div>
 
       </div>

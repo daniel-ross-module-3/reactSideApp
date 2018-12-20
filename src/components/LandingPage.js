@@ -7,7 +7,7 @@ class LandingPage extends Component {
 render(){
   return(
     <div className="background-marble">
-      <Landing className="background-marble"/>
+      <Landing {...this.props} className="background-marble"/>
     </div>
   )
 }

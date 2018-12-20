@@ -1,4 +1,4 @@
-.logo {
+/* .logo {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -15,16 +15,17 @@
   top: 50%;
   left: 50%;
   /* background: url("../public/LogoMakr_6OQZ68.png"); */
-  width: 50px;
+  /* width: 50px;
   height: 50px;
   -webkit-transform: translateX(-50%) translateY(-50%);
           transform: translateX(-50%) translateY(-50%);
   -webkit-animation: fade-up-in 2500ms ease-in-out;
           animation: fade-up-in 2500ms ease-in-out;
 }
-.imgSize{
-   position: absolute;
-  top: 23%;
+.imgSize{ */
+   /* position: absolute; */
+  /* top: 23%; */
+  /* margin-top: 40px;
   left: 22%;
     height: 20vh;
   
@@ -34,18 +35,18 @@
           animation: fade-up-in 2500ms ease-in-out;
           transition: all 1.2s;
           transform: rotateY(0deg)
-}
+} */
 /* flipping img =-==--=-=-= */
 /* .imgSize{
   transition:all 1.2s;
   transform: rotateY(0deg);
 } */
-.imgSize:hover{
+/* .imgSize:hover{
     transform: rotateY(-360deg);
-}
+} */
 
 /* =-=--=-=-=-=-=-=-=-=-=-=-=-=-=flipping img */
-.circle {
+/* .circle {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -187,11 +188,11 @@
   100% {
     opacity: 1;
   }
-}
+} */
 /*
  * Misc
  */
-.notes {
+/* .notes {
   position: absolute;
   left: 0;
   right: 0;
@@ -208,8 +209,8 @@
   font-weight: bold;
   color: #e2850e;
   margin: 0 1em;
-}
+} */
 /* .notes a.current {
   border-bottom: 2px solid #2a919a;
   color: #black;
-} */
+} */ 
