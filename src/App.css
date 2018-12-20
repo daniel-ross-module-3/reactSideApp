@@ -374,3 +374,22 @@
 .buttonDiv{
 padding: 20px;
 }
+.square-btn-green{
+  background: #0EC518;
+    border: 1px solid #fff;
+    /* border-radius: 100%; */
+    box-shadow: 0 -2px 0 3px #0b9512 inset, 0 5px 5px rgba(0, 7, 1, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
+    cursor: pointer;
+
+}
+.square-btn-red{
+  background: red;
+    border: 1px solid #fff;
+    /* border-radius: 100%; */
+    box-shadow: 0 -2px 0 3px red inset, 0 5px 5px rgba(0, 7, 1, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
+    cursor: pointer;
+}
+.white{
+  color: white;
+  text-decoration: none;
+}

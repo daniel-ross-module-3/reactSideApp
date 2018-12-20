@@ -38,8 +38,8 @@ class EmployeeList extends Component {
           <td>{eachEmployee.employeeKey}</td>
           <td>{eachEmployee.payRate}</td>
           <td>{eachEmployee.position}</td>
-          <Button bsStyle="info">
-          <Link to={`/employeeFind/${eachEmployee.employeeKey}`}>Check Employee Shifts</Link>
+          <Button className="btn btn-secondary">
+          <Link className="white" to={`/employeeFind/${eachEmployee.employeeKey}`}>Check Employee Shifts</Link>
           </Button>
         </tr>;
     });
