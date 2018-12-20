@@ -4,11 +4,7 @@ import Axios from 'axios';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-// export const Food = () => (
-//   <div>
-//     Favorite Food: <FontAwesomeIcon icon="stroopwafel" />
-//   </div>
-// );
+
 
 class itemDetail extends Component {
   state = {

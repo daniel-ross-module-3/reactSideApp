@@ -3,7 +3,10 @@ import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import NavbarComponent from "./components/Navbar";
 import ItemIndex from "./components/itemIndex";
+
 import itemDetails from "./components/itemDetails";
+import employeeShiftDetail from "./components/employeeShifts"
+
 import Signup from "./components/Signup";
 import UserService from "./services/UserService";
 import Login from "./components/Login";
@@ -55,27 +58,39 @@ class App extends Component {
       <div className="App">
         <NavbarComponent logUserOut={this.logout} loggedIn={this.logInTheUser} user={this.state.loggedInUser} />
 
+
+          {/* ///////////// this is where the routes are created to link with the backend. each route here renders a "new Page"*/} 
+ 
         <Switch>
           <Route exact path="/" render={props => <LandingPage {...props} currentUser={this.state.loggedInUser} />} />
 
-          {/* <Route path="" */}
 
           <Route path="/itemList" render={props => <ItemIndex {...props} currentUser={this.state.loggedInUser} />} />
 
           <Route path="/employeeList" render={props => <EmployeeList {...props} currentUser={this.state.loggedInUser} />} />
 
           <Route path="/findingEmployee" render={props => <FindEmployee {...props} currentUser={this.state.loggedInUser} />} />
+          
 
+
+          <Route path="/employeeFind/:key" component={employeeShiftDetail}  />
+          {/* // render={props => <FindEmployee {...props} currentUser={this.state.loggedInUser} />} */}
           <Route path="/items/details/:id" component={itemDetails} />
           
+
           <Route path="/userHomePage" render={props => <User {...props} currentUser= {this.state.loggedInUser}/> } />
+
 
           <Route path="/user/login" render={props => <Login {...props} logTheUserIntoAppComponent={this.logInTheUser} />} />
 
           <Route path="/user/signup" render={props => <Signup {...props} logTheUserIntoAppComponent={this.logInTheUser} />} />
           
-        </Switch>
-     </div>)
+
+          </Switch>
+          
+     </div>
+        
+    )
   }
 }
     

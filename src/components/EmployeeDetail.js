@@ -82,6 +82,9 @@ showEmployeeShifts=()=>{
         <li className="red">
           Clock Out : {eachShift.clockOut}
         </li>
+          <li className="red">
+            diference : {Number(eachShift.clockOut - eachShift.clockIn)}
+          </li>
         </ul>
       )
     })
@@ -90,7 +93,7 @@ showEmployeeShifts=()=>{
     }
 
 getTime=()=>{
-    console.log("-=-=-=-==-00000000000=--==-=-=--=",this.state.theEmployee);
+
     Axios.post("http://localhost:5000/api/clockInAndOut/" + this.state.theEmployee._id, { withCredentials: true })
   .then((theUpdatedEmployee)=>{
     console.log(String(new Date()),'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~',theUpdatedEmployee);
@@ -129,11 +132,15 @@ showButton =()=>{
     console.log("###########################", this.state)
     return <div>
         <div className="employee-form">
-        <form onSubmit={this.submitForm}>
-          <label>Employee Code: </label><br/>
-          <input id="employeeKey" value={this.state.employeeKey} onChange={this.updateForm} /><br/>
+          <form onSubmit={this.submitForm}>
+            <label>Employee Code: </label>
+            <br />
+            <input id="employeeKey" value={this.state.employeeKey} onChange={this.updateForm} />
+            <br />
 
-          <button>Submit</button><br/>
+            <button>Submit</button>
+            <br />
+
 
 
 
@@ -141,6 +148,7 @@ showButton =()=>{
           <button onClick={this.getTime} className="bg-danger">Clock Out</button> */}
           
         </form>
+
           {this.showButton()}
         </div>
         <Table striped bordered condensed hover>
@@ -151,14 +159,11 @@ showButton =()=>{
               <th>Employee Pay Rate</th>
               <th>Position</th>
               <th>Delete an Employee Info</th>
-
             </tr>
           </thead>
           <tbody>{this.showEmployeeDetails()}</tbody>
         </Table>
-        <div className="clock">
-        {this.showEmployeeShifts()}
-        </div>
+        <div className="clock">{this.showEmployeeShifts()}</div>
       </div>;
   }
   

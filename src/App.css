@@ -589,6 +589,12 @@
   font-size: 11px;
   text-align: center;
 } 
+.red{
+  color: red;
+}
+.blue{
+  color: blue;
+}
 }
 
 
