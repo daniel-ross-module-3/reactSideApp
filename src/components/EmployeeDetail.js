@@ -86,6 +86,9 @@ showEmployeeShifts=()=>{
         <li className="red">
           Clock Out : {eachShift.clockOut}
         </li>
+          <li className="red">
+            diference : {Number(eachShift.clockOut - eachShift.clockIn)}
+          </li>
         </ul>
       )
     
@@ -105,17 +108,7 @@ showEmployeeShifts=()=>{
 
 
 getTime=()=>{
-
-
-  var currentdate = new Date();
-  var datetime = + currentdate.getDate() + "/"
-    + (currentdate.getMonth() + 1) + "/"
-    + currentdate.getFullYear() + " @ "
-    + currentdate.getHours() + ":"
-    + currentdate.getMinutes() + ":"
-    + currentdate.getSeconds();
-    console.log("-=-=-=-==-00000000000=--==-=-=--=",this.state.theEmployee._id);
-    
+  
     Axios.post("http://localhost:5000/api/clockInAndOut/" + this.state.theEmployee._id, { withCredentials: true })
   .then((theUpdatedEmployee)=>{
 
@@ -169,7 +162,7 @@ showButton =()=>{
             <br />
 
           </form>
-          
+
           {this.showButton()}
         </div>
         <Table striped bordered condensed hover>
