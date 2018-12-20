@@ -223,6 +223,7 @@
   align-items: center;
   padding: 2vw;
   height: 28vh;
+  margin-bottom: 100px;
 }
 .employee-form form{
   width: 23vw;
@@ -339,4 +340,56 @@
 }
 .blue{
   color: blue;
+}
+
+.btn-green {
+    background: #0EC518;
+    border: 1px solid #fff;
+    border-radius: 100%;
+    box-shadow: 0 -2px 0 3px #0b9512 inset, 0 5px 5px rgba(0, 7, 1, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
+    cursor: pointer;
+    display: inline-block;
+    width: 5vw;
+    padding: 35px;
+}
+.btn-green:hover {
+  background: #333;
+  box-shadow: 0 -2px 0 3px #1a1a1a inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rgba(255, 255, 255, 0.32) inset;
+}
+.btn-red {
+  background: #E53030;
+  border: 3px solid #fff;
+  border-radius: 100%;
+  box-shadow: 0 -2px 0 3px #c91919 inset, 0 5px 5px rgba(65, 8, 8, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
+  cursor: pointer;
+  display: inline-block;
+  height: 5vw;
+  width: 5vw;
+}
+.btn-red:hover {
+  background: #333;
+  box-shadow: 0 -2px 0 3px #1a1a1a inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rgba(255, 255, 255, 0.32) inset;
+}
+
+.buttonDiv{
+padding: 20px;
+}
+.square-btn-green{
+  background: #0EC518;
+    border: 1px solid #fff;
+    /* border-radius: 100%; */
+    box-shadow: 0 -2px 0 3px #0b9512 inset, 0 5px 5px rgba(0, 7, 1, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
+    cursor: pointer;
+
+}
+.square-btn-red{
+  background: red;
+    border: 1px solid #fff;
+    /* border-radius: 100%; */
+    box-shadow: 0 -2px 0 3px red inset, 0 5px 5px rgba(0, 7, 1, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
+    cursor: pointer;
+}
+.white{
+  color: white;
+  text-decoration: none;
 }
