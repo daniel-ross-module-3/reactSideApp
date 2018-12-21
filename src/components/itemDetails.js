@@ -98,7 +98,7 @@ class itemDetail extends Component {
       </div> */}
       <div className="buttonAndPen">
            <div> <FontAwesomeIcon icon="pen" onClick={this.toggleForm} className="colorPen"/> </div>
-          <button onClick={this.deleteItem} className="delete deleteButton bg-danger">Delete</button>
+          <button onClick={this.deleteItem} className="deleteButton bg-danger">Delete</button>
           </div>
             </div>
             

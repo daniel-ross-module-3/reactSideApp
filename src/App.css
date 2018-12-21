@@ -467,7 +467,7 @@ text-decoration: none;
   flex-direction: column;
   border: 1px solid black;
   margin-top: 14vh;
-  height: 49vh;
+  height: 60vh;
   justify-content: space-between;
   background-color: rgba(0,0,0,.7);
   padding: 3vw;
@@ -648,7 +648,13 @@ text-decoration: none;
 .blue{
   color: blue;
 }
+.listNone{
+  list-style-type: none;
 }
+}
+
+
+
 
 
 

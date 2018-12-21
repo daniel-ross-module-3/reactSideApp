@@ -76,7 +76,7 @@ showEmployeeShifts=()=>{
   if(singleEmployee){
     const showShifts = singleEmployee.shifts.map((eachShift,i)=>{
       return(
-        <ul key={i}>
+        <ul key={i} className="listNone">
         <li className="blue">
           Clock In : {eachShift.clockIn}
         </li>
@@ -86,6 +86,7 @@ showEmployeeShifts=()=>{
           {/* <li className="red">
             diference : {Number(eachShift.clockOut - eachShift.clockIn)}
           </li> */}
+          <hr></hr>
         </ul>
       )
     })

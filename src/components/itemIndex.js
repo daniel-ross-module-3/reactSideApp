@@ -72,7 +72,7 @@ class ItemIndex extends Component {
 
           <td>
           <Button className="square-btn-red" onClick={() => this.changeQuanity(-1, eachItem)}>
-
+            -
             </Button>
             {eachItem.quantity}
             <Button className="square-btn-green" onClick={() => this.changeQuanity(1, eachItem)}>
