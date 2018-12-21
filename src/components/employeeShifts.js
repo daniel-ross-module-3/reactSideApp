@@ -57,10 +57,8 @@ getEmployeeShifts=()=>{
         
         return (
           <div>
-            <div>
-          <h1>Hello {this.singleEmployee}</h1>
-          </div>
-          <ul key={i}>
+            
+          <ul key={i} className="listNone">
 
             <li className="blue">
               Clock In : {eachShift.clockIn}
@@ -72,7 +70,7 @@ getEmployeeShifts=()=>{
               <li className="red">
                 Total time : {hours}h {minutes}m {seconds}s
               </li>
-
+            <hr></hr>
           </ul>
           
           </div>
@@ -85,12 +83,15 @@ getEmployeeShifts=()=>{
   }
   render(){
     
-    return <div>
+    return <div className="finalDiv">
         {/* im trying to print on the screen  = Hello, employee.employeeName.
       
       These are your shifts, and the shifts would be organized by date.(which they are)
       
       Also, i want to give the total hours on the week, ive read somethings about date subtractions with math.abs({eachShift.clockOut-eachShift.clockIn*/}
+
+        <h1>Shifts Dates and Durations</h1>
+
         {this.showEmployeeShifts()}
       </div>;
 
